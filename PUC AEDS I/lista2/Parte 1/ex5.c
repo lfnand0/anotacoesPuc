@@ -5,7 +5,7 @@ int main() {
     int num2;
     printf("Digite dois números: ");
     scanf("%d %d", &num1, &num2);
-    printf(" \nAgora escolha uma das seguintes operações digitando o número que o foi atribuído:\n1. Média entre os números digitados\n2. Diferença do maior pelo menor\n3. Produto entre os números digitados\n4. Divisão do primeiro pelo segundo\n");
+    printf(" \nAgora escolha uma das seguintes operações digitando o número que a foi atribuída:\n1. Média entre os números digitados\n2. Diferença do maior pelo menor\n3. Produto entre os números digitados\n4. Divisão do primeiro pelo segundo\n");
     int operacao;
     scanf("%d", &operacao);
     if (operacao == 1) {
