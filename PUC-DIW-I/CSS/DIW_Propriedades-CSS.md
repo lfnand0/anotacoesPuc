@@ -218,3 +218,4 @@
         * animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier (n, n, n)
     * animation-fill-mode: define a dinâmica de passagem de tempo da animação
         * animation-fill-mode: none | forwards | backwards | both
+        
