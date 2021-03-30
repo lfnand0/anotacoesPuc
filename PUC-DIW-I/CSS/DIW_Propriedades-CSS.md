@@ -125,6 +125,15 @@
             * padding-top, padding-left, padding-right, padding-bottom
         * bordas
             * border-top, border-left, border-right, border-bottom
+        * Forma de aplicação de tamanhos:
+            * 1 valor: Aplica-se a todas as propriedades (top, right, bottom, left);
+                * border: 10px;
+            * 2 valores: O primeiro se aplica a top e bottom e o segundo se aplica a right e left;
+                * border: 5px 20px;
+            * 3 valores: O primeiro se aplica a top, o segundo a left e right e o terceiro a bottom;
+                * border: 5px 20px 10px;
+            * 4 valores: Se aplicam na ordem horária (top, right, bottom, left);
+                * border: 5px 20px 10px 20px;
 
 #### Posicionamento
     * position: static

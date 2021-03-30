@@ -48,7 +48,7 @@ int main() {
     }
 
     k = 0;
-    printf("GRUPO 1 EM ORDEM CRESCENTE: \n");
+    printf("\nGRUPO 1 EM ORDEM CRESCENTE: \n");
     while (k < 4) {
         printf("%d ", grupo1[k]);
         k++;
@@ -56,7 +56,7 @@ int main() {
 
     k = 0;
     i = 0;
-    printf("GRUPO 1 EM ORDEM DECRESCENTE: \n");
+    printf("\nGRUPO 1 EM ORDEM DECRESCENTE: \n");
     while (i < 2) {
         temporario = grupo1[i];
         grupo1[i] = grupo1[3 - i];
@@ -70,7 +70,7 @@ int main() {
 
 // -------------GRUPO 2 -----------------------------
     k = 0;
-    printf("GRUPO 2: \n");
+    printf("\n\nGRUPO 2: \n");
     while (k < 4) {
         printf("%d ", grupo2[k]);
         k++;
@@ -91,7 +91,7 @@ int main() {
     }
 
     k = 0;
-    printf("GRUPO 2 EM ORDEM CRESCENTE: \n");
+    printf("\nGRUPO 2 EM ORDEM CRESCENTE: \n");
     while (k < 4) {
         printf("%d ", grupo2[k]);
         k++;
@@ -99,7 +99,7 @@ int main() {
 
     k = 0;
     i = 0;
-    printf("GRUPO 2 EM ORDEM DECRESCENTE: \n");
+    printf("\nGRUPO 2 EM ORDEM DECRESCENTE: \n");
     while (i < 2) {
         temporario = grupo2[i];
         grupo2[i] = grupo2[3 - i];
@@ -113,7 +113,7 @@ int main() {
 
 // -------------GRUPO 3 -----------------------------
     k = 0;
-    printf("GRUPO 3: \n");
+    printf("\n\nGRUPO 3: \n");
     while (k < 4) {
         printf("%d ", grupo3[k]);
         k++;
@@ -134,7 +134,7 @@ int main() {
     }
 
     k = 0;
-    printf("GRUPO 3 EM ORDEM CRESCENTE: \n");
+    printf("\nGRUPO 3 EM ORDEM CRESCENTE: \n");
     while (k < 4) {
         printf("%d ", grupo3[k]);
         k++;
@@ -142,7 +142,7 @@ int main() {
 
     k = 0;
     i = 0;
-    printf("GRUPO 3 EM ORDEM DECRESCENTE: \n");
+    printf("\nGRUPO 3 EM ORDEM DECRESCENTE: \n");
     while (i < 2) {
         temporario = grupo3[i];
         grupo3[i] = grupo3[3 - i];
@@ -153,12 +153,99 @@ int main() {
         printf("%d ", grupo3[k]);
         k++;
     }
+
+// -------------GRUPO 4 -----------------------------
+    k = 0;
+    printf("\n\nGRUPO 4: \n");
+    while (k < 4) {
+        printf("%d ", grupo4[k]);
+        k++;
+    }
+    
+    i = 0;
+    while (i < 4) {
+        j = 0;
+        while (j < 3 - i) {
+            if (grupo4[j] > grupo4[j+1]) {
+                temporario = grupo4[j];
+                grupo4[j] = grupo4[j+1];
+                grupo4[j+1] = temporario;
+            }
+            j++;
+        }
+        i++;
+    }
+
+    k = 0;
+    printf("\nGRUPO 4 EM ORDEM CRESCENTE: \n");
+    while (k < 4) {
+        printf("%d ", grupo4[k]);
+        k++;
+    }
+
+    k = 0;
+    i = 0;
+    printf("\nGRUPO 4 EM ORDEM DECRESCENTE: \n");
+    while (i < 2) {
+        temporario = grupo4[i];
+        grupo4[i] = grupo4[3 - i];
+        grupo4[3 - i] = temporario;
+        i++;
+    }
+    while (k < 4) {
+        printf("%d ", grupo4[k]);
+        k++;
+    }
+
+// -------------GRUPO 5 -----------------------------
+    k = 0;
+    printf("\n\nGRUPO 5: \n");
+    while (k < 4) {
+        printf("%d ", grupo5[k]);
+        k++;
+    }
+    
+    i = 0;
+    while (i < 4) {
+        j = 0;
+        while (j < 3 - i) {
+            if (grupo5[j] > grupo5[j+1]) {
+                temporario = grupo5[j];
+                grupo5[j] = grupo5[j+1];
+                grupo5[j+1] = temporario;
+            }
+            j++;
+        }
+        i++;
+    }
+
+    k = 0;
+    printf("\nGRUPO 5 EM ORDEM CRESCENTE: \n");
+    while (k < 4) {
+        printf("%d ", grupo5[k]);
+        k++;
+    }
+
+    k = 0;
+    i = 0;
+    printf("\nGRUPO 5 EM ORDEM DECRESCENTE: \n");
+    while (i < 2) {
+        temporario = grupo5[i];
+        grupo5[i] = grupo5[3 - i];
+        grupo5[3 - i] = temporario;
+        i++;
+    }
+    while (k < 4) {
+        printf("%d ", grupo5[k]);
+        k++;
+    }
+    printf("\n");
+    return 0;
 }
 
-
-
-
 /* 
+SEGUNDA RESOLUÇÃO:
+
 int main() {
     int grupo[20];
 
