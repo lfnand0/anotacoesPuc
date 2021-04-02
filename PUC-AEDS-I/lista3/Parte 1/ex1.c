@@ -1,9 +1,11 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
   int i = 0;
 
-  while (i < 5) {
+  while (i < 5)
+  {
     int a, b, c, d;
     printf("Digite 4 valores para o %dº grupo: ", i + 1);
     scanf("%d %d %d %d", &a, &b, &c, &d);
@@ -14,17 +16,20 @@ int main() {
     int j = 0, temporario;
     while (j < 3)
     { // ordenando por ordem crescente
-      if (a > b)  {
+      if (a > b)
+      {
         temporario = a;
         a = b;
         b = temporario;
       }
-      if (b > c) {
+      if (b > c)
+      {
         temporario = b;
         b = c;
         c = temporario;
       }
-      if (c > d) {
+      if (c > d)
+      {
         temporario = c;
         c = d;
         d = temporario;
@@ -36,15 +41,7 @@ int main() {
     printf("----------------------------\n\n");
     i++;
   }
-
 }
-
-
-
-
-
-
-
 
 /*
 USANDO ARRAYS
@@ -93,15 +90,6 @@ int main()
 }
 
 */
-
-
-
-
-
-
-
-
-
 
 /* 
 PRIMEIRA RESOLUÇÃO (pouco optimizada):
