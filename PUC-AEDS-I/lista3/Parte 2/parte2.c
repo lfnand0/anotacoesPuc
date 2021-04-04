@@ -6,24 +6,26 @@ um programa que imprima os L primeiros elementos
 da série de Fibonacci
 ************************************************/
 
-int main() {
+int main()
+{
   int L;
   printf("Digite o valor de L: ");
   scanf("%d", &L);
-  if (L <= 0) {
+  if (L <= 0)
+  {
     printf("Erro: L precisa ser maior que 0.\n");
     return 0;
   }
-    int F0 = 1;
-    int F = 1;
-    int anterior;
-    printf("%d", F0);
-    int i;
-    while (i < L - 1) { // se L for 1, o loop não será executado
-      anterior = F;
-      F = F + anterior;
-      printf(", %d", anterior);
-      i++;
+  int F = 1, anterior = 0, temp;
+  printf("%d", F);
+  int i = 0;
+  while (i < L - 1)
+  { // se L for 1, o loop não será executado
+    temp = anterior;
+    anterior = F;
+    F = F + temp;
+    printf(", %d", F);
+    i++;
   }
   printf("\n");
 }
