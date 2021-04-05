@@ -1,4 +1,4 @@
-# Essential Concepts - 1
+# Chapter 3 - Essential Concepts - 1
 
 ## Memory
   * Usually divided into Memory Slots = 8 bit

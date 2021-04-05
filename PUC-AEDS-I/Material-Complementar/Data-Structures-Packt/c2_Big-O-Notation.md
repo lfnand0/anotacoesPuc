@@ -1,4 +1,4 @@
-# Big O Notation
+# Chapter 2 - Big O Notation
   * Big O notation is used in CS to describe the performance or complexity of an algorithm. It's used to describe the execution time required or the space used (e.g. in memory or on disk) by an algorithm.
   * To measure the efficiency of an algorithm, we need to consider two things:
     * Time Complexity: How much time does it take to run completely?

@@ -1,4 +1,4 @@
-# Data Structure
+# Chapter 4 - Data Structure
 * A data structure is a particular way of organizing data in a computer so that it can be used effectively.
 * They can be:
   * Primitive(predefined way of storing data):

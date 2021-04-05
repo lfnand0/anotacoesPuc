@@ -1,4 +1,4 @@
-# Arrays
+# Chapter 5 - Arrays
 
 ## Types of Arrays
 * Static:
