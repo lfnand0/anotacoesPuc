@@ -8,8 +8,8 @@
   * [x] Chapter 1: Course Introduction
   * [x] Chapter 2: Big O Notation
   * [x] Chapter 3: Essential Concepts - 1
-  * [ ] Chapter 4: Data Structure - Introduction
-  * [ ] Chapter 5: Data Structure - Arrays
+  * [x] Chapter 4: Data Structure - Introduction
+  * [x] Chapter 5: Data Structure - Arrays
   * [ ] Chapter 6: Data Structures - Linked Lists
   * [ ] Chapter 7: Data Structures - Stack and Queue
   * [ ] Chapter 8: Data Structures - Hash Tables
