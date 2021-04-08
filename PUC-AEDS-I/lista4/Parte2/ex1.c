@@ -2,11 +2,13 @@
 #include <math.h>
 
 int main() {
-  int inicial, num, binario;
+  int inicial, num = -1, binario;
   double i;
   binario = i = 0;
-  printf("Digite um valor que você queira converter para binário: ");
-  scanf("%d", &num);
+  while (num < 0) {
+    printf("Digite um valor que você queira converter para binário: ");
+    scanf("%d", &num);
+  }
   inicial = num;
   if (num == 1) {
     binario = 1;
