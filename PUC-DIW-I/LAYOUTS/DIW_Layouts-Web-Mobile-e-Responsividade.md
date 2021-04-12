@@ -1,4 +1,4 @@
-# Layous Web/Mobile e Responsividade
+# Layouts Web/Mobile e Responsividade
 
 ## Responsividade
 * Estruturação de conteúdo adaptável para qualquer tela
