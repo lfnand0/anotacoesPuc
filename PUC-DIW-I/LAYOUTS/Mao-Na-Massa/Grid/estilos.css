@@ -1,0 +1,95 @@
+html {
+    height: 100%;
+}
+
+body, ul, li, p {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header a {
+    text-decoration: none;
+    color: white;
+}
+
+h1 {
+    font-size: 120%;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.header {
+    background: #727272;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.footer {
+    background: #727272;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: white;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu li {
+    list-style: none;
+    margin-left: 10px;
+}
+
+
+/* CSS Grid 1 */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    grid-gap: 10px;
+}
+
+.banner {
+    grid-column: 3;
+    grid-row: 2 / 5;
+}
+
+@media screen and (max-width:600px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+        display:block;
+    }
+
+    .card:nth-child(9) {
+        display:none;
+    }
+
+    .banner {
+        display: none;
+    }
+}
