@@ -65,7 +65,8 @@ void area(float a, float b)
 
 void areaCircunferencia(float a)
 {
-  printf("A área da circunferência de raio %.2f é %.2f.\n", a, 2 * a * M_PI);
+  float pi = 355.0/113.0; // aproximação de pi
+  printf("A área da circunferência de raio %.2f é %.2f.\n", a, 2 * a * pi);
 }
 
 void fatorial(int a)
