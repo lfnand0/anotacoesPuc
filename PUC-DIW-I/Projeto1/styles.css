@@ -15,7 +15,7 @@ header {
   padding-top: 12px;
 }
 
-.nav-link, .fa, .input-search {
+.nav-link, .fa, .input-group {
   color: white;
 }
 
@@ -28,7 +28,7 @@ header {
   padding-top: 31px;
 }
 
-.input-search {
+.input-group {
   border: 0;
   border-radius: 7px 0px 0px 7px;
   background-color:rgb(54, 57, 63);
@@ -103,6 +103,9 @@ div > button{
   .dropdown {
     display: none;
   }
+  .footer_logo {
+    display: none;
+  }
 }
 
 .fa-star {
@@ -153,6 +156,6 @@ img {
 
 
 
-.footer {
+footer {
   background-color: black;
 }

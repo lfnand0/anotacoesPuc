@@ -28,7 +28,7 @@
     <div class="row">
       <div class="col-12 header_area">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-1 col-lg-1">
+          <div class="col-12 col-sm-12 col-md-1 col-lg-1">
             <img class="logo" src="images/logo.png" alt="Logo">
           </div>
           <div class="col-12 col-sm-0 col-md-8 col-lg-8">
@@ -44,18 +44,24 @@
                   <a class="nav-link" href="#avaliacoes">avaliações</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">entrevistas & makingof</a>
+                  <a class="nav-link" href="#entrevistas">entrevistas & makingof</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">novidades</a>
+                  <a class="nav-link" href="#novidades">novidades</a>
                 </li>
 
               </ul>
             </nav>
           </div>
-          <div class="col-12 col-sm-6 col-md-3 col-lg-3 search-container">
-            <input class="input-search" type="text" placeholder=" Pesquisar Filme" name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+          <div class="col-12 col-sm-12 col-md-3 col-lg-3 search-container">
+            <div class="input-group">
+              <div class="input-group rounded">
+                <input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Pesquisar"
+                  aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
           </div>
         </div>
       </div>
@@ -215,9 +221,9 @@
         </div>
         <div class="col-4 col-md-4 col-sm-12" style="padding: 20px;">
           <div class="card" style="width: 18rem;">
-            <img src="./images/reviewer.png" class="card-img-top" alt="Reviewer 1">
+            <img src="./images/reviewer1.jpeg" class="card-img-top" alt="Reviewer 1">
             <div class="card-body">
-              <p class="card-text"><strong>Avaliação: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus id, iusto doloremque assumenda dolore sequi dolorem nihil vitae natus aliquam!<br></p>
+              <p class="card-text"><strong>Avaliação: </strong>Um dos melhores filmes de 2021, o diretor realmente se sobressaiu com essa obra.<br></p>
               <div class="rating_avaliacao">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -231,13 +237,13 @@
         </div>
         <div class="col-4 col-md-4 col-sm-12" style="padding: 20px;">
           <div class="card" style="width: 18rem;">
-            <img src="./images/reviewer.png" class="card-img-top" alt="Reviewer 1">
+            <img src="./images/reviewer2.jpeg" class="card-img-top" alt="Reviewer 1">
             <div class="card-body">
-              <p class="card-text"><strong>Avaliação: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus id, iusto doloremque assumenda dolore sequi dolorem nihil vitae natus aliquam!<br></p>
+              <p class="card-text"><strong>Avaliação: </strong>Péssima produção, péssima atuação.<br></p>
               <div class="rating_avaliacao">
                 <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <p style="font-size: 12px;">24/04/2021</p>
@@ -247,9 +253,9 @@
         </div>
         <div class="col-4 col-md-4 col-sm-12" style="padding: 20px;">
           <div class="card" style="width: 18rem;">
-            <img src="./images/reviewer.png" class="card-img-top" alt="Reviewer 1">
+            <img src="./images/reviewer3.jpeg" class="card-img-top" alt="Reviewer 1">
             <div class="card-body">
-              <p class="card-text"><strong>Avaliação: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus id, iusto doloremque assumenda dolore sequi dolorem nihil vitae natus aliquam!<br></p>
+              <p class="card-text"><strong>Avaliação: </strong>Clássico contemporâneo, definitivamente um dos melhores filmes que eu já assisti em toda a minha vida, Atuação impecável, 10/10.<br></p>
               <div class="rating_avaliacao">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -323,13 +329,95 @@
       </div>
       
     </div>
+    
+    <div class="container novidades">
+      <div class="row">
+        <div class="col-12 col-md-8 col-lg-8 col-sm-12">
+          <h1 id="novidades">Novidades</h1>
+          <div class="row">
+            <div class="col-12">
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="./images/novidade1.png" alt="Capitao">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Capitão América 4 é confirmado com roteirista de Falcão e o Soldado Invernal</h5>
+                      <p class="card-text">Malcolm Spelman assinará script do longa com Dalan Musson, da equipe da série</p>
+                      <p class="card-text"><small class="text-muted">TAGS: Séries, TV, Marvel</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="./images/novidade2.png" alt="You">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Terminam as gravações da 3ª temporada de You, da Netflix</h5>
+                      <p class="card-text">Novos episódios devem ser lançados este ano</p>
+                      <p class="card-text"><small class="text-muted">TAGS: Séries, TV, Netflix</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="./images/novidade3.png" alt="Dolittle">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Dolittle e 365 Dias vencem o Framboesa de Ouro 2021</h5>
+                      <p class="card-text">Premiação celebra os piores longas do ano</p>
+                      <p class="card-text"><small class="text-muted">TAGS: Filmes, Framboesa de Ouro</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4 col-sm-12">
+          <h1>Sobre</h1>
+          <p>Estudante do 1º período de Ciência da Computação da PUC Minas Praça da Liberdade</h1>
+          <p><i class="fas fa-user"></i><strong> Redação: </strong>Luiz Fernando Oliveira Maciel</p>
+          <p><i class="fas fa-user"></i><strong> Pesquisa: </strong>Luiz Fernando Oliveira Maciel</p>
+          <p><i class="fas fa-user"></i><strong> Gerente Geral: </strong>Luiz Fernando Oliveira Maciel</p>
+          <h3>Redes Sociais</h3>
+          <h3>
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-twitter-square"></i>
+            <i class="fab fa-instagram-square"></i>
+          </h3>
+        </div>
+      </div>
+    </div>
   </main>
 
 
   <footer class="footer">
-    <div class="text-center p-3">
-      Portal - Todos os direitos reservados - 2021
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-10 col-lg-10 col-sm-12">
+          <div class="text-center p-3">
+            <p>Copyright 2021 - Disciplina de Desenvolvimento de Interfaces Web - <strong>ICEI Puc Minas</strong></p>
+          </div>
+        </div>
+        <div class="col-12 col-md-2 col-lg-2 col-sm-0 footer_logo">
+          <img class="logo" src="./images/logo.png">
+        </div>
+      </div>
     </div>
+    
+    
   </footer>
 
 
