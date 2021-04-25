@@ -1,0 +1,71 @@
+
+.header{
+    background: rgb(110, 62, 138);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header_area{
+    padding: 20px;
+}
+
+.menu_area{
+    margin-top: 30px;
+}
+
+.menu_area nav a{
+    background-color: #5f3d75;
+    color:white;
+    margin-bottom: 10px;
+}
+
+.menu_area nav a:hover{
+    background-color: #764c92;
+}
+
+
+.active{
+    background-color: #402253 !important;
+}
+
+.logo{
+    width: 150px;
+}
+
+.main{
+    
+}
+
+.main .card{
+    margin-bottom: 15px;
+}
+
+.main_area{
+    margin-bottom: 20px;
+}
+
+.footer{
+    margin-top: 10px;
+    background: rgb(110, 62, 138);
+    color: white;
+}
+.footer_area{
+    padding: 20px;
+    text-align: center  ;
+}
+
+.modal-body img{ width: 100%;}
+
+.menu_area2{
+    margin-top: 30px;
+}
+
+.menu_area2 nav a{
+    background-color: #eea010;
+    color:white;
+    margin-bottom: 10px;
+}
+
+.menu_area2 nav a:hover{
+    background-color: #eeb868;
+}

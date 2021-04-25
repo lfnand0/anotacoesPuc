@@ -1,0 +1,158 @@
+body {
+  background-color: rgb(54, 57, 63);
+  color: white;
+  margin: 0;
+}
+
+header {
+  background-color: black;
+}
+.logo {
+  width: 90px;
+}
+
+.nav {
+  padding-top: 12px;
+}
+
+.nav-link, .fa, .input-search {
+  color: white;
+}
+
+.nav-link:hover {
+  background: rgb(54, 57, 63);
+  color: black;
+}
+
+.search-container{
+  padding-top: 31px;
+}
+
+.input-search {
+  border: 0;
+  border-radius: 7px 0px 0px 7px;
+  background-color:rgb(54, 57, 63);
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+
+div > button{
+  border: 0;
+  border-radius: 0px 7px 7px 0px;
+  background-color: rgb(54, 57, 63);
+}
+
+.lancamentos {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.lancamentos > h1{
+  padding: 15px;
+  size: 50%;
+  text-align: center;
+}
+
+.carousel-item {
+  width: 100%;
+  height: 100%;
+}
+
+.sinopse1 {
+  width: 45%;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.item {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 100px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+
+.item > iframe {
+  width: 90%; 
+}
+
+.sinopse1 {
+  font-size: 60%;
+}
+
+@media screen and (max-width:900px) {
+  .sinopse1 {
+    display: none;
+  }
+  .nav { 
+    display: none;
+  }
+  .dropdown {
+    display: none;
+  }
+}
+
+.fa-star {
+  color: rgb(84, 87, 93);
+}
+.checked {
+  color: rgb(17, 18, 20);
+}
+
+.destaque {
+  background-color: rgb(28, 29, 32);
+  padding: 20px;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: flex-end;
+}
+
+img {
+  width: 100%;
+}
+
+.destaque_imagens {
+  padding-bottom: 20px;
+}
+
+.card-img-top {
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.card-text {
+  font-size: 12px;
+}
+
+.card {
+  padding: 20px;
+  size: 10%;
+  background-color: rgb(54, 57, 63);
+  border: 0;
+}
+
+
+
+
+
+
+
+
+.footer {
+  background-color: black;
+}
