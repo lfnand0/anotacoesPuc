@@ -14,7 +14,7 @@ int main()
     scanf("%d", &razao);
     printf("Digite o valor de n: ");
     scanf("%d", &n);
-    
+
     int termoN;
     termoPA(primeiroTermo, razao, n, &termoN);
     printf("O %dº termo da progressão aritmética é %d.\n", n, termoN);
