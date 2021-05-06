@@ -1,16 +1,20 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
   int v[6];
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < 6; i++)
+  {
     printf("Digite o %dº elemento do vetor: ", i + 1);
     scanf("%d", &v[i]);
   }
 
   int contadorPares = 0;
   printf("\nNÚMEROS PARES: \n");
-  for (int i = 0; i < 6; i++) {
-    if (v[i] % 2 == 0) {
+  for (int i = 0; i < 6; i++)
+  {
+    if (v[i] % 2 == 0)
+    {
       printf("%d, ", v[i]);
       contadorPares++;
     }
@@ -19,8 +23,10 @@ int main() {
 
   int contadorImpares = 0;
   printf("\nNÚMEROS ÍMPARES: \n");
-  for (int i = 0; i < 6; i++) {
-    if (v[i] % 2 != 0) {
+  for (int i = 0; i < 6; i++)
+  {
+    if (v[i] % 2 != 0)
+    {
       printf("%d, ", v[i]);
       contadorImpares++;
     }
