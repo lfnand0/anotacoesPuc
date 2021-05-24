@@ -6,6 +6,13 @@ void inputString(char v[]) {
   fgets(v, 256, stdin);
 }
 
+void imprimirString(char v[]) {
+  for (int i = 0; i < strlen(v); i++) {
+    printf("%c", v[i]);
+  }
+  printf("\n");
+}
+
 void removerEspacoInicio(char v[]) {
   int length = strlen(v), posicao = 0, inicio = 0;
   char vOriginal[strlen(v)];
@@ -55,18 +62,56 @@ void removerEspacosDuplos(char v[]) {
 }
 
 void criptografarString(char v[]) {
-  char vMod[256];
-
   removerEspacosDuplos(v);
   removerEspacoFinal(v);
   removerEspacoInicio(v);
-  strcpy(vMod, v);
-
-  int length = strlen(v), posicaoPalavra = 0;
-  for (int i = 0; i <= length; i++) {
-    
+  int length = strlen(v), palavras = 1;
+  for (int i = 0; i < length - 1; i++) {
+    if (v[i] == ' ') {
+      palavras++;
+    }
   }
+
+  char vMod[palavras][256];
+
+  int j = 0, k = 0;
+  for (int i = 0; i < 256; i++) {
+    if (v[i] == ' ') {
+      vMod[j][k] = '\0';
+      j++;
+      k = 0;
+    } else {
+      vMod[j][k] = v[i];
+      k++;
+    }
+  }
+
+  char vResultante[256];
+  int posResultante = 0;
+  for (int i = 0; i < palavras; i++) {
+    int length = strlen(vMod[i]);
+    for (int j = length/2; j < length; j++) {
+      vMod[i][j] = '?';
+    }
+    for (int k = 0; k < length; k++) {
+      vResultante[posResultante++] = vMod[i][k];
+      vResultante[posResultante] = '\0';
+
+      if (k + 1 == length) {
+        vResultante[posResultante++] = ' ';
+        vResultante[posResultante] = '\0';
+      }
+    }
+  }
+
+  strcpy(v, vResultante);
+
 }
+
 int main() {
-  
+  char v[256];
+  inputString(v);
+  criptografarString(v);
+  printf("Frase criptografada: ");
+  imprimirString(v);
 }

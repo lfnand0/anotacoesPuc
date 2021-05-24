@@ -61,87 +61,77 @@ void removerEspacosDuplos(char v[]) {
   }
 }
 
-void inverterString(char v[]) {
-  int length = strlen(v);
-  for (int i = 0; i < length / 2; i++) {
-    char temp = v[i];
-    v[i] = v[length - i - 1];
-    v[length - i - 1] = temp;
-  }
-}
-
-// NÃO ESTÁ FUNCIONANDO (ainda)
 void criptografarString(char v[]) {
-  char vMod[256], p1[256], p2[256];
-  for (int k = 0; k < 256; k++) {
-    p1[k] = 0;
-    p2[k] = 0;
-    vMod[k] = 0;
-  }
-
   removerEspacosDuplos(v);
   removerEspacoFinal(v);
   removerEspacoInicio(v);
+  int length = strlen(v), palavras = 1;
+  for (int i = 0; i < length - 1; i++) {
+    if (v[i] == ' ') {
+      palavras++;
+    }
+  }
 
-  int length = strlen(v), posPalavra = 0, posMod = 0;
-  // posMod = posicionamento no vetor resultante,  posPalavra = posicionamento dos vetores p1 e p2;
-  for (int i = 0; i <= length; i++) {
-    if (v[i] != ' ' && v[i] != '\n' && v[i] != '\0') {
-      p1[posPalavra] = v[i];
-      p1[posPalavra + 1] = '\0';
-      posPalavra++;
-    } else if (v[i] == '\0') {
-      for (int j = 0; j < strlen(p1); j++) {
-        inverterString(p1);
-        vMod[posMod] = p1[j];
-        vMod[posMod + 1] = '\0';
-        posMod++;
-      }
+  char vMod[palavras][256];
+
+  int j = 0, k = 0;
+  for (int i = 0; i < 256; i++) {
+    if (v[i] == ' ') {
+      vMod[j][k] = '\0';
+      j++;
+      k = 0;
     } else {
-      posPalavra = 0;
-      for (int j = i + 1; j <= length; j++) {
-        if (v[j] != ' ' && v[j] != '\n' && v[j] != '\0') {
-          p2[posPalavra] = v[j];
-          p2[posPalavra + 1] = '\0';
-          posPalavra++;
-        } else { // nesse momento teremos duas palavras
-          inverterString(p2);
-          int length1 = strlen(p1), length2 = strlen(p2);
-          // printf("DEBUG: p1[3] = %d e p1[4] = %d\n", p1[3], p1[4]);
-          // printf("DEBUG: strlen(p1) = %d\n", length2);
-          for (int k = 0; k < (length1 > length2 ? length1 : length2); k++) {
-            printf("DEBUG: p1[%d] = %d\n", k, p1[k]);
-            printf("DEBUG: p2[%d] = %d\n", k, p2[k]);
-            if (p1[k] != 0){ // checando se p1[k] é um caractere válido
-              vMod[posMod] = p1[k];
-              vMod[posMod + 1] = '\0';
-              posMod++;
-            }
-            if (p2[k] != 0) {
-              vMod[posMod] = p2[k];
-              vMod[posMod + 1] = '\0';
-              posMod++;
-            }
-          }
-        }
+      vMod[j][k] = v[i];
+      k++;
+    }
+  }
+
+  char vResultante[256];
+  int posResultante = 0;
+  for (int i = 0; i < palavras - 1; i += 2) {
+    int len1 = strlen(vMod[i]), len2 = strlen(vMod[i + 1]);
+    int fim1 = 0, fim2 = len2 - 1;
+    while (fim1 < len1 || fim2 >= 0) {
+      if (fim1 < len1) {
+        vResultante[posResultante] = vMod[i][fim1];
+        vResultante[posResultante + 1] = '\0';
+        posResultante++;
+        fim1++;
       }
-      posPalavra = 0;
-      vMod[posMod] = ' ';
-      posMod++;
-      // limpando vetores
-      for (int k = 0; k < 256; k++) {
-        p1[k] = 0;
-        p2[k] = 0;
+      if (fim2 >= 0) {
+        vResultante[posResultante] = vMod[i + 1][fim2];
+        vResultante[posResultante + 1] = '\0';
+        posResultante++;
+        fim2--;
       }
     }
-  
+    if (i + 1 < palavras - 1) {
+      vResultante[posResultante] = ' ';
+      vResultante[posResultante + 1] = '\0';
+      posResultante++;
+    } else {
+      vResultante[posResultante] = '\0';
+      posResultante++;
+    }
+    
   }
-  strcpy(v, vMod);
+  
+  if (palavras % 2 != 0) {
+    int length = strlen(vMod[palavras - 1]);
+    for (int i = length - 1; i >= 0; i--) {
+      vResultante[posResultante] = vMod[palavras - 1][i];
+      vResultante[posResultante + 1] = '\0';
+      posResultante++;
+    }
+  }
+
+  strcpy(v, vResultante);
 }
 
 int main() {
   char v[256];
   inputString(v);
   criptografarString(v);
+  printf("Frase criptografada: ");
   imprimirString(v);
 }
