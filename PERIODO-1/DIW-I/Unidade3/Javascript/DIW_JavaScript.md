@@ -151,4 +151,14 @@ let casado = true;
 - Podemos também criar (ou alterar o valor) uma nova propriedade simplesmente atribuindo valor à uma nova chave:
   pessoa.casado = false;
   pessoa.estudante = false;
--
+- Podemos optar pela criação de um objeto vazio, que receberá propriedades depois. Para criar um, fazemos o seguinte:
+  let pessoa = {};
+  OU 
+  let pessoa = new Object();
+  pessoa['nome'] = 'Luiz';
+  pessoa['idade'] = 17;
+  pessoa['estudante'] = true;
+
+## Janelas modais
+
+- 
