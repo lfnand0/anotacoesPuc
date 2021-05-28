@@ -1,0 +1,16 @@
+body {
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.jogo {
+  display: flex;
+  justify-content: center;
+}
+
+.alunos {
+  padding: 20px;
+}
