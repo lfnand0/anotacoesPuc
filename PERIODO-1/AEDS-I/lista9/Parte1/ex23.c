@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 
-void inputString(char v[], char sub[]) {
+void inputString(char v[], char sub[])
+{
   printf("Input: ");
   fgets(v, 256, stdin);
   printf("Subcadeia: ");
   fgets(sub, 256, stdin);
-  while (strlen(sub) > strlen(v)) {
+  while (strlen(sub) > strlen(v))
+  {
     printf("Erro! Tamanho incorreto. Digite outra subcadeia: ");
     fgets(sub, 256, stdin);
   }
@@ -17,21 +19,27 @@ void inputString(char v[], char sub[]) {
   sub[strlen(sub)] = 0;
 }
 
-void buscaSubcadeia(char v[], char sub[]) {
+void buscaSubcadeia(char v[], char sub[])
+{
   int length = strlen(v), subLength = strlen(sub);
   int quantSub = 0;
-  for (int i = 0; i < length; i++) {
+  for (int i = 0; i < length; i++)
+  {
     int comparacoes = 0;
-    if (v[i] == sub[0]) {
+    if (v[i] == sub[0])
+    {
       int posSub = 0;
-      for (int j = i; j < subLength + i; j++) {
-        if (v[j] == sub[posSub]) {
+      for (int j = i; j < subLength + i; j++)
+      {
+        if (v[j] == sub[posSub])
+        {
           posSub++;
           comparacoes++;
           // printf("j = %d, COMPARACOES: %d\n", j, comparacoes);
         }
       }
-      if (comparacoes == subLength) {
+      if (comparacoes == subLength)
+      {
         quantSub++;
       }
     }
@@ -39,9 +47,9 @@ void buscaSubcadeia(char v[], char sub[]) {
   printf("A subcadeia '%s' aparece %d vez(es) na cadeia.\n", sub, quantSub);
 }
 
-int main() {
+int main()
+{
   char v[256], sub[256];
   inputString(v, sub);
   buscaSubcadeia(v, sub);
-  
 }
