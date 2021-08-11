@@ -27,9 +27,9 @@ int main() {
     fgets(arrayStrings[numEntrada], 1000, stdin);
     setbuf(stdin, NULL);
     arrayStrings[numEntrada][strcspn(arrayStrings[numEntrada], "\n")] = 0;
-    if (isFim(arrayStrings[numEntrada + 2])) {
-      printf(" -- %d -- ", numEntrada + 2);
-    }
+    //if (isFim(arrayStrings[numEntrada + 2])) {
+    //  printf(" -- %d -- ", numEntrada + 2);
+    //}
   } while (isFim(arrayStrings[numEntrada++]) == 0);
   numEntrada--;
 
