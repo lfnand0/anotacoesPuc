@@ -1,0 +1,1 @@
+O programa imprimirá infinitamente, com variação dos valores entre os limites mínimos e máximos de cada tipagem.

@@ -1,0 +1,13 @@
+65 = A
+69 = E
+73 = I
+79 = O
+85 = U
+97 = a
+101 = e
+105 = i
+111 = o
+117 = u
+
+O método checa se a letra recebida é uma vogal, e retorna um valor booleano (true ou false) caso seja ou não.
+

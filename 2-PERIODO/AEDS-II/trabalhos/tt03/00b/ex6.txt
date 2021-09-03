@@ -1,0 +1,1 @@
+O primeiro código, por causa da organização dos ifs e elses.

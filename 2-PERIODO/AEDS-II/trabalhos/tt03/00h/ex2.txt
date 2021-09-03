@@ -1,0 +1,5 @@
+Quando printRecursivo() é chamado, ele executa printRecursivo passando o valor 2 (primeiro valor a ser printado).
+Como o i vale 2, ele cai no if e executa printRecursivo(1) -> com i = 1, o 1 será printado, e a função chama 
+printRecursivo(0) -> printa 0, ignora o if e printa 0 novamente.
+Depois do printRecursivo(0), a funcao não é mais chamada, e portanto o print na última linha será executada de acordo
+com quem foi chamado mais recentemente, e, portanto, será printado 2, 1, 0, 0, 1 e 2.

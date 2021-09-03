@@ -1,0 +1,5 @@
+A operação x = x << 1 adiciona um 0 no final do valor x em binário - 23 em
+binário é 10111, depois da operação será 101110, que é 46 em base 10.
+
+A operação y = x >> 1 retira o último digito do valor em binário - 10111 se
+tornará 1011, que é 11 em base 10.

@@ -1,0 +1,15 @@
+Memória
+75h: f1 -> 7Eh
+76h:
+77h:
+78h:
+79h:
+7Ah:
+7Bh:
+7Ch:
+7Dh:
+7Eh: codigo = 5
+7Fh: nome = ""
+80h:
+81h:
+82h:
