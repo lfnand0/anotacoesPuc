@@ -167,25 +167,32 @@ class Serie {
         InputStreamReader isr = new InputStreamReader(new FileInputStream(html));
         BufferedReader br = new BufferedReader(isr);
 
-        while (!br.readLine().contains("Formato"));
+        while (!br.readLine().contains("Formato"))
+            ;
         this.setFormato(removeTags(br.readLine()).replaceAll("&#160;", "").replaceAll("&nbsp;", "").trim());
 
-        while (!br.readLine().contains("Duração"));
+        while (!br.readLine().contains("Duração"))
+            ;
         this.setDuracao(removeTags(br.readLine()).replaceAll("&#160;", "").replaceAll("&nbsp;", "").trim());
 
-        while (!br.readLine().contains("País de origem"));
+        while (!br.readLine().contains("País de origem"))
+            ;
         this.setPaisDeOrigem(removeTags(br.readLine()).replaceAll("&#160;", "").replaceAll("&nbsp;", "").trim());
 
-        while (!br.readLine().contains("Idioma original"));
+        while (!br.readLine().contains("Idioma original"))
+            ;
         this.setIdioma(removeTags(br.readLine()).replaceAll("&#160;", "").replaceAll("&nbsp;", "").trim());
 
-        while (!br.readLine().contains("Emissora de televisão original"));
+        while (!br.readLine().contains("Emissora de televisão original"))
+            ;
         this.setEmissora(removeTags(br.readLine()).replaceAll("&#160;", "").replaceAll("&nbsp;", "").trim());
 
-        while (!br.readLine().contains("Transmissão original"));
+        while (!br.readLine().contains("Transmissão original"))
+            ;
         this.setTransmissao(removeTags(br.readLine()).replaceAll("&#160;", "").replaceAll("&nbsp;", "").trim());
 
-        while (!br.readLine().contains("N.º de temporadas"));
+        while (!br.readLine().contains("N.º de temporadas"))
+            ;
         String temp = removeTags(br.readLine()).trim();
         int num = 0;
         int i = 0;
@@ -217,75 +224,34 @@ class Serie {
     }
 }
 
-class Celula {
-    public int Elemento;
-    public Celula inf, sup, esq, dir;
+/**
+ * Célula dupla
+ * 
+ */
+class CelulaDupla {
 
-    public Celula() {
-        this(0);
+    public Serie elemento;
+    public CelulaDupla ant;
+    public CelulaDupla prox;
+
+    public CelulaDupla() {
+        elemento = null;
+        ant = null;
+        prox = null;
     }
 
-    public Celula(int elemento) {
-        this(elemento, null, null, null, null);
-    }
-
-    public Celula(int item, Celula inferior, Celula superior, Celula esquerda, Celula direita) {
+    public CelulaDupla(Serie item) {
         elemento = item;
-        sup = superior;
-        inf = inferior;
-        esq = esquerda;
-        dir = direita;
+        ant = null;
+        prox = null;
+    }
+
+    public CelulaDupla(Serie item, CelulaDupla anterior, CelulaDupla proxima) {
+        elemento = item;
+        ant = anterior;
+        prox = proxima;
     }
 }
-
-
-class Matriz {
-    private Celula[][] matriz;
-    private Celula inicio;
-    private int linha;
-    private int coluna;
-
-    public Matriz(int l, int c) {
-        matriz = new Celula[l][c];
-        linha = l;
-        coluna = c;
-
-        for (int i = 0; i < l; i++) {
-            for (int j = 0; j < c; j++) {
-                matriz[i][j] = new Celula();
-            }
-        }
-
-        for (int i = 0; i < l; i++) {
-            for (j = 0; j < c; j++) {
-                if (j == 0) {
-                    matriz[i][j].esq = null; 
-                } else {
-                    matriz[i][j].esq = matriz[i][j - 1];
-                }
-
-                if (j == c - 1) {
-                    matriz[i][j].dir = null;
-                } else {
-                    matriz[i][j].dir = matriz[i][j + 1];
-                }
-
-                if (i == 0) {
-                    matriz[i][j].sup = null; 
-                } else {
-                    matriz[i][j].sup = matriz[i - 1][j];
-                }
-
-                if (i == l - 1) {
-                    matriz[i][j].inf = null;
-                } else {
-                    matriz[i][j].inf = matriz[i + 1][j];
-                }
-            }
-        }
-    }
-}
-
 
 /**
  * Classe Lista duplamente encadeada
@@ -392,8 +358,8 @@ class Lista {
      */
     public void ordenar() {
         long startTime = System.nanoTime();
-        
-        quicksort(0, n-1);
+
+        quicksort(0, n - 1);
 
         long duration = System.nanoTime() - startTime;
         this.matricula(duration);
@@ -402,7 +368,7 @@ class Lista {
     /**
      * Função recursiva de quicksort
      * 
-     * @param esq: limite inferior 
+     * @param esq: limite inferior
      * @param dir: limite superior
      */
     public void quicksort(int esq, int dir) {
@@ -426,8 +392,10 @@ class Lista {
             }
         }
 
-        if (esq < j) quicksort(esq, j);
-        if (i < dir) quicksort(i, dir);
+        if (esq < j)
+            quicksort(esq, j);
+        if (i < dir)
+            quicksort(i, dir);
     }
 
     public void matricula(long time) { // criação do arq log
@@ -481,7 +449,7 @@ class TP03Q14 {
             lista.inserirFim(serie);
         }
         // lista.teste();
-        
+
         lista.ordenar();
         lista.mostrar();
     }
