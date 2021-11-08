@@ -182,7 +182,7 @@ int isFim(char line[])
 
 void matricula(int compareCounter, int swapCounter, float time)
 {
-  FILE *fp = fopen("matricula_selecaoRecursiva.txt", "w");
+  FILE *fp = fopen("matrícula_shellsort.txt", "w");
   fprintf(fp, "727245\t%d\t%d\t%f ", compareCounter, swapCounter, time);
 }
 
@@ -208,6 +208,7 @@ char *tratarString(char *s)
       newString[pos++] = s[i];
     }
     newString[pos] = '\0';
+    
   }
 
   pos = 0;
@@ -227,61 +228,40 @@ char *tratarString(char *s)
     newString[pos--] = '\0';
   }
 
+  // printf("Debug: %s\n", newString);
   return newString;
 }
 
 /** 
- * Algoritmo de ordenação por seleção recursiva
+ * Algoritmo de ordenação Shellsort
  * 
  * @param lista: Array com as séries
  * @param n: tamanho do array lista
  * @param swapCounter: ponteiro para o inteiro que conta a quantidade de swaps realizados no algoritmo
  * @param compareCounter: ponteiro para o inteiro que conta a quantidade de comparações realizados entre dois elementos do array no algoritmo
- * @param i: posição do array que será lida na iteração, utilizado para a recursividade
+ * 
 */
-void ordenar(Serie lista[], int n, int *swapCounter, int *compareCounter, int i)
+void ordenar(Serie lista[], int n, int *swapCounter, int *compareCounter)
 {
-  int menor = i;
+  for (int i = n / 2; i > 0; i /= 2) {
+    for (int j = i; j < n; j++) {
+      Serie temp = lista[j];
 
-  for (int j = i + 1; j < n; j++)
-  {
+      int k = j;
 
-    char str1[100];
-    char str2[100];
+      while (k >= i && (strcmp(lista[k - i].idioma, temp.idioma) > 0) ||
+            (strcmp(lista[k - i].idioma, temp.idioma) == 0 &&
+             strcmp(lista[k - i].nome, temp.nome) > 0)) 
+      {
+        lista[k] = lista[k - i];
+        k -= i;
+        *compareCounter = *compareCounter + 1;
+        *swapCounter = *swapCounter + 1;
+      }
 
-    strcpy(str1, tratarString(lista[j].pais));
-    strcpy(str2, tratarString(lista[menor].pais));
-
-    if (strcmp(str1, str2) == 0)
-    {
-      strcpy(str1, lista[j].nome);
-      strcpy(str2, lista[menor].nome);
+      lista[k] = temp;
+      *swapCounter = *swapCounter + 1;
     }
-
-    strcpy(str1, tratarString(str1));
-    strcpy(str2, tratarString(str2));
-
-    // printf("DEBUG: %s --- %s\n", str1, str2);
-
-    if (strcmp(str1, str2) < 0)
-    {
-      menor = j;
-    }
-    *compareCounter = *compareCounter + 2;
-  }
-
-  if (menor != i)
-  {
-    Serie temp = lista[menor];
-    lista[menor] = lista[i];
-    lista[i] = temp;
-
-    *swapCounter = *swapCounter + 1;
-  }
-
-  if (i + 1 < n)
-  {
-    ordenar(lista, n, swapCounter, compareCounter, i + 1);
   }
 }
 
@@ -304,15 +284,14 @@ int main()
     char *html = ler_html(line);
     ler_serie(&serie, html);
 
-    lista[counter] = serie;
-    counter++;
+    lista[counter++] = serie;
 
     free(html);
     readline(line + tam_prefixo, MAX_LINE_SIZE);
   }
 
   clock_t startTime = clock();
-  ordenar(lista, counter, &swapCounter, &compareCounter, 0);
+  ordenar(lista, counter, &swapCounter, &compareCounter);
   clock_t endTime = clock();
   float time = (float)(endTime - startTime);
 

@@ -182,7 +182,7 @@ int isFim(char line[])
 
 void matricula(int compareCounter, int swapCounter, float time)
 {
-  FILE *fp = fopen("matricula_selecaoRecursiva.txt", "w");
+  FILE *fp = fopen("matrícula_countingsort.txt", "w");
   fprintf(fp, "727245\t%d\t%d\t%f ", compareCounter, swapCounter, time);
 }
 
@@ -227,43 +227,55 @@ char *tratarString(char *s)
     newString[pos--] = '\0';
   }
 
+  // printf("Debug: %s\n", newString);
   return newString;
 }
 
 /** 
- * Algoritmo de ordenação por seleção recursiva
+ * Função auxiliar para trocar duas posições de um array
  * 
- * @param lista: Array com as séries
- * @param n: tamanho do array lista
- * @param swapCounter: ponteiro para o inteiro que conta a quantidade de swaps realizados no algoritmo
- * @param compareCounter: ponteiro para o inteiro que conta a quantidade de comparações realizados entre dois elementos do array no algoritmo
- * @param i: posição do array que será lida na iteração, utilizado para a recursividade
 */
-void ordenar(Serie lista[], int n, int *swapCounter, int *compareCounter, int i)
+void swap(Serie lista[], int a, int b, int *swapCounter)
+{
+  Serie temp = lista[a];
+  lista[a] = lista[b];
+  lista[b] = temp;
+
+  *swapCounter = *swapCounter + 1;
+}
+
+/** 
+ * Encontra o maior elemento no array de acordo com o atributo num_temporadas
+ * 
+*/
+int getMaior(Serie lista[], int n)
+{
+  int maior = lista[0].num_temporadas;
+  for (int i = 1; i < n; i++)
+  {
+    if (lista[i].num_temporadas > maior)
+    {
+      maior = lista[i].num_temporadas;
+    }
+  }
+
+  return maior;
+}
+
+/** 
+ * Algoritmo recursivo de ordenação Selection Sort, necessário para a execução
+ * do algoritmo Counting Sort
+ * 
+*/
+void selection(Serie lista[], int n, int *swapCounter, int *compareCounter, int i)
 {
   int menor = i;
 
   for (int j = i + 1; j < n; j++)
   {
-
-    char str1[100];
-    char str2[100];
-
-    strcpy(str1, tratarString(lista[j].pais));
-    strcpy(str2, tratarString(lista[menor].pais));
-
-    if (strcmp(str1, str2) == 0)
-    {
-      strcpy(str1, lista[j].nome);
-      strcpy(str2, lista[menor].nome);
-    }
-
-    strcpy(str1, tratarString(str1));
-    strcpy(str2, tratarString(str2));
-
-    // printf("DEBUG: %s --- %s\n", str1, str2);
-
-    if (strcmp(str1, str2) < 0)
+    if (lista[j].num_temporadas < lista[menor].num_temporadas ||
+        (lista[j].num_temporadas == lista[menor].num_temporadas) &&
+            strcmp(lista[j].nome, lista[menor].nome) < 0)
     {
       menor = j;
     }
@@ -271,18 +283,50 @@ void ordenar(Serie lista[], int n, int *swapCounter, int *compareCounter, int i)
   }
 
   if (menor != i)
-  {
-    Serie temp = lista[menor];
-    lista[menor] = lista[i];
-    lista[i] = temp;
+    swap(lista, menor, i, &*swapCounter);
 
+  if (i + 1 < n)
+    selection(lista, n, swapCounter, compareCounter, i + 1);
+}
+
+/** 
+ * Algoritmo de ordenação Counting Sort
+ * 
+ * @param lista: Array com as séries
+ * @param n: tamanho do array lista
+ * @param swapCounter: ponteiro para o inteiro que conta a quantidade de swaps realizados no algoritmo
+ * @param compareCounter: ponteiro para o inteiro que conta a quantidade de comparações realizados entre dois elementos do array no algoritmo
+ * 
+*/
+void ordenar(Serie lista[], int n, int *swapCounter, int *compareCounter)
+{
+  int tamanho = getMaior(lista, n) + 1;
+  int count[tamanho];
+  Serie output[n];
+
+  for (int i = 0; i < tamanho; count[i] = 0, i++)
+    ;
+
+  for (int i = 0; i < n; count[lista[i].num_temporadas]++, i++)
+    ;
+
+  for (int i = 1; i < tamanho; count[i] += count[i - 1], i++)
+    ;
+
+  for (int i = n - 1; i >= 0;
+       output[count[lista[i].num_temporadas] - 1] = lista[i],
+           count[lista[i].num_temporadas]--,
+           *swapCounter = *swapCounter + 1,
+           i--)
+    ;
+
+  for (int i = 0; i < n; i++)
+  {
+    lista[i] = output[i];
     *swapCounter = *swapCounter + 1;
   }
 
-  if (i + 1 < n)
-  {
-    ordenar(lista, n, swapCounter, compareCounter, i + 1);
-  }
+  selection(lista, n, &*swapCounter, &*compareCounter, 0);
 }
 
 int main()
@@ -304,15 +348,14 @@ int main()
     char *html = ler_html(line);
     ler_serie(&serie, html);
 
-    lista[counter] = serie;
-    counter++;
+    lista[counter++] = serie;
 
     free(html);
     readline(line + tam_prefixo, MAX_LINE_SIZE);
   }
 
   clock_t startTime = clock();
-  ordenar(lista, counter, &swapCounter, &compareCounter, 0);
+  ordenar(lista, counter, &swapCounter, &compareCounter);
   clock_t endTime = clock();
   float time = (float)(endTime - startTime);
 

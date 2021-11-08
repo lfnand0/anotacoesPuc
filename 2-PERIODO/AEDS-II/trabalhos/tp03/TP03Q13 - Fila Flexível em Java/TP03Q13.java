@@ -194,10 +194,8 @@ class Serie {
         while (!br.readLine().contains("N.º de temporadas"))
             ;
         String temp = removeTags(br.readLine()).trim();
-
         int num = 0;
         int i = 0;
-
         while (i < temp.length()) {
             if ((int) temp.charAt(i) >= 48 && (int) temp.charAt(i) <= 57) {
                 num = num * 10 + temp.charAt(i) - '0';
@@ -212,7 +210,6 @@ class Serie {
             ;
         temp = removeTags(br.readLine()).trim();
         num = i = 0;
-
         while (i < temp.length()) {
             if ((int) temp.charAt(i) >= 48 && (int) temp.charAt(i) <= 57) {
                 num = num * 10 + temp.charAt(i) - '0';
@@ -227,6 +224,7 @@ class Serie {
     }
 }
 
+
 /**
  * Classe Célula
  * 
@@ -234,13 +232,13 @@ class Serie {
  * 
  */
 class Celula {
-    public Serie elemento;
-    public Celula prox;
+	public Serie elemento;
+	public Celula prox;
 
     public Celula() {
         elemento = null;
         prox = null;
-    }
+    }  
 
     public Celula(Serie serie) {
         elemento = serie;
@@ -254,179 +252,95 @@ class Celula {
 }
 
 /**
- * Classe Lista (com alocação flexível)
+ * Classe FIla (com alocação flexível)
  * 
  * @author Luiz Fernando Oliveira Maciel
  * 
  */
-class Lista {
-    private Celula primeira;
-    private Celula ultima;
-    private int n;
-    private int compareCounter;
-    private int swapCounter;
+class Fila {
+    public Celula frente;
+    public Celula tras;
+    public int n;
+    public int tamanho;
 
-    /**
-     * Construtor da classe.
-     */
-    public Lista() {
-        primeira = new Celula();
-        ultima = primeira;
+    public Fila() {
+        frente = new Celula();
+        tras = frente;
+        tamanho = 5;
+        n = 0;
     }
 
     /**
-     * Insere um elemento na primeira posição da lista e desloca os demais elementos
-     * para o fim da lista.
+     * Adiciona um item ao fim da fila, e caso a fila
+     * esteja cheia, retira o elemento da frente e adiciona
      * 
-     * 
-     * @param item a ser inserido.
+     * @param item a ser adicionado
      */
-    public void inserirInicio(Serie item) {
-        Celula aux = primeira.prox;
-
-        primeira.prox = new Celula(item, aux);
-        primeira.prox.prox = aux;
-
-        if (aux == null)
-            ultima = primeira.prox;
-        n++;
-    }
-
-    /**
-     * Insere um elemento na ultima posição da lista.
-     * 
-     * 
-     * @param item a ser inserido.
-     */
-    public void inserirFim(Serie item) {
-        ultima.prox = new Celula(item);
-        ultima = ultima.prox;
-        n++;
-    }
-
-    /**
-     * Insere um elemento em uma posição especifica e move os demais elementos para
-     * o fim da lista.
-     * 
-     * 
-     * @param item: elemento a ser inserido.
-     * @param pos:  posição de insercao.
-     * @return false caso a posição seja inválida
-     */
-    public boolean inserir(Serie item, int pos) {
-        boolean retorno = false;
-
-        if ((pos >= 1) && (pos <= n) && (primeira != ultima)) {
-            int i = 0;
-            Celula aux = primeira;
-
-            while (i < pos) {
-                aux = aux.prox;
-                i++;
-            }
-
-            Celula nova = new Celula(item, aux.prox);
-            aux.prox = nova;
+    public void enfileirar(Serie item) {
+        if (n < tamanho) {
+            tras.prox = new Celula(item);
+            tras = tras.prox;
+            getMedia();
             n++;
-
-            retorno = true;
+        } else {
+            desenfileirar();
+            enfileirar(item);
         }
-        return retorno;
     }
 
     /**
-     * Remove um elemento da primeira posicao da lista e movimenta os demais
-     * elementos para o inicio da mesma.
+     * Remove a célula na frente da fila
      * 
-     * @return Elemento a ser removido.
-     * @return null caso a lista não possua nenhum elemento.
+     * @return Serie a ser removida
+     * @return null quando a fila está vazia
      */
-    public Serie removerInicio() {
+    public Serie desenfileirar(){
         Serie retorno = null;
 
-        if (primeira != ultima) {
-            Celula aux = primeira.prox;
-            primeira.prox = aux.prox;
+        if (frente != tras && n > 0) {
+            Celula aux = frente;
+            frente = frente.prox;
 
-            if (primeira.prox == null)
-                ultima = primeira;
+            retorno = frente.elemento;
+
+            aux.prox = null;
+            aux = null;
 
             n--;
-            retorno = aux.elemento;
         }
+
         return retorno;
     }
 
     /**
-     * Remove um elemento da ultima posicao da lista.
+     * Calcula a média do número de temporadas de todas as séries da fila
      * 
-     * 
-     * @return Elemento a ser removido.
-     * @return null caso a lista não possua nenhum elemento.
      */
-    public Serie removerFim() {
-        Serie retorno = null;
-
-        if (primeira != ultima) {
-            Celula aux = primeira;
-
-            while (aux.prox != ultima)
-                aux = aux.prox;
-
-            Celula temp = aux.prox;
-            ultima = aux;
-            ultima.prox = null;
-
-            n--;
-            retorno = temp.elemento;
+    public void getMedia() {
+        double media = 0;
+        double total = 0;
+        for (Celula temp = frente.prox; temp != null; temp = temp.prox) {
+            media += temp.elemento.getNumeroDeTemporadas();
+            total++;
         }
-        return retorno;
+
+        media = media / total;
+        media = Math.round(media);
+        MyIO.println((int) media);
     }
 
     /**
-     * Remove um elemento de uma posicao especifica da lista e movimenta os demais
-     * elementos para o inicio da mesma.
+     * Imprime a fila do primeiro elemento ao último
      * 
-     * 
-     * @param pos: Posicao de remocao.
-     * 
-     * @return Elemento a ser removido.
-     * @return null caso a posição seja inválida
-     */
-    public Serie remover(int pos) {
-        Serie retorno = null;
-
-        if ((pos >= 1) && (pos <= n) && (primeira != ultima)) {
-            int i = 0;
-            Celula aux = primeira;
-
-            while (i < pos) {
-                aux = aux.prox;
-                i++;
-            }
-
-            Celula temp = aux.prox;
-            aux.prox = aux.prox.prox;
-
-            if (aux.prox == null)
-                ultima = aux;
-
-            n--;
-            retorno = temp.elemento;
-        }
-        return retorno;
-    }
-
-    /**
-     * Printa todos os elementos da lista
      */
     public void mostrar() {
-        for (Celula i = primeira.prox; i != null; i.elemento.imprimir(), i = i.prox)
-            ;
+        for (Celula temp = frente.prox; temp != null; temp = temp.prox) {
+            temp.elemento.imprimir();
+        }
     }
 }
 
-class TP03Q11 {
+class TP03Q13 {
     public static boolean isFim(String s) {
         return (s.length() == 3 && s.charAt(0) == 'F' && s.charAt(1) == 'I' && s.charAt(2) == 'M');
     }
@@ -443,20 +357,18 @@ class TP03Q11 {
         } while (isFim(entrada[numEntrada++]) == false);
         numEntrada--; // Desconsiderar última linha contendo FIM
 
-        Lista lista = new Lista();
+        Fila fila = new Fila();
 
         for (int i = 0; i < numEntrada; i++) {
             Serie serie = new Serie();
 
             try {
                 serie.ler(entrada[i]);
+                fila.enfileirar(serie);
             } catch (Exception e) {
             }
-            lista.inserirFim(serie);
         }
 
-        // lista.mostrar();
-        // MyIO.println("--------------");
         entrada = new String[1000];
         String temp = MyIO.readLine().trim();
         numEntrada = 0;
@@ -467,55 +379,17 @@ class TP03Q11 {
         for (int i = 0; i < numEntrada; i++) {
             Serie serie = new Serie();
             String linha = MyIO.readLine();
-            // MyIO.println("linha " + i + ": " + linha);
-            String comando = "" + linha.charAt(0) + linha.charAt(1);
+            String comando = "" + linha.charAt(0);
             int pos = 0;
-            if (comando.equals("II") == true) {
+            if (comando.equals("I") == true) {
                 try {
-                    serie.ler(linha.substring(3).trim());
-                    lista.inserirInicio(serie);
-                } catch (Exception e) {
-                }
+                    serie.ler(linha.substring(2).trim());
+                } catch (Exception e) {}
 
-            } else if (comando.equals("I*") == true) {
-                pos = Integer.parseInt(linha.substring(3, 5));
-                try {
-                    serie.ler(linha.substring(6).trim());
-                    lista.inserir(serie, pos);
-                } catch (Exception e) {
-                }
-
-            } else if (comando.equals("IF") == true) {
-                try {
-                    serie.ler(linha.substring(3).trim());
-                    lista.inserirFim(serie);
-                } catch (Exception e) {
-                }
-
-            } else if (comando.equals("RI") == true) {
-                try {
-                    serie = lista.removerInicio();
-                    System.out.println("(R) " + serie.getNome());
-                } catch (Exception e) {
-                }
-
-            } else if (comando.equals("R*") == true) {
-                try {
-                    pos = Integer.parseInt(linha.substring(3, 5));
-                    serie = lista.remover(pos);
-                    System.out.println("(R) " + serie.getNome());
-                } catch (Exception e) {
-                }
-
-            } else if (comando.equals("RF") == true) {
-                try {
-                    serie = lista.removerFim();
-                    System.out.println("(R) " + serie.getNome());
-                } catch (Exception e) {
-                }
-
+                fila.enfileirar(serie);
+            } else if (comando.equals("R") == true) {
+                fila.desenfileirar();
             }
         }
-        lista.mostrar();
     }
 }

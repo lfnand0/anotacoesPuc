@@ -194,10 +194,8 @@ class Serie {
         while (!br.readLine().contains("N.º de temporadas"))
             ;
         String temp = removeTags(br.readLine()).trim();
-
         int num = 0;
         int i = 0;
-
         while (i < temp.length()) {
             if ((int) temp.charAt(i) >= 48 && (int) temp.charAt(i) <= 57) {
                 num = num * 10 + temp.charAt(i) - '0';
@@ -212,7 +210,6 @@ class Serie {
             ;
         temp = removeTags(br.readLine()).trim();
         num = i = 0;
-
         while (i < temp.length()) {
             if ((int) temp.charAt(i) >= 48 && (int) temp.charAt(i) <= 57) {
                 num = num * 10 + temp.charAt(i) - '0';
@@ -227,6 +224,7 @@ class Serie {
     }
 }
 
+
 /**
  * Classe Célula
  * 
@@ -234,13 +232,13 @@ class Serie {
  * 
  */
 class Celula {
-    public Serie elemento;
-    public Celula prox;
+	public Serie elemento;
+	public Celula prox;
 
     public Celula() {
         elemento = null;
         prox = null;
-    }
+    }  
 
     public Celula(Serie serie) {
         elemento = serie;
@@ -254,179 +252,41 @@ class Celula {
 }
 
 /**
- * Classe Lista (com alocação flexível)
+ * Classe Pilha (com alocação flexível)
  * 
  * @author Luiz Fernando Oliveira Maciel
  * 
  */
-class Lista {
-    private Celula primeira;
-    private Celula ultima;
-    private int n;
-    private int compareCounter;
-    private int swapCounter;
+class Pilha {
+    public Celula topo = null;
+    public int n;
 
-    /**
-     * Construtor da classe.
-     */
-    public Lista() {
-        primeira = new Celula();
-        ultima = primeira;
-    }
+    public Pilha() {}
 
-    /**
-     * Insere um elemento na primeira posição da lista e desloca os demais elementos
-     * para o fim da lista.
-     * 
-     * 
-     * @param item a ser inserido.
-     */
-    public void inserirInicio(Serie item) {
-        Celula aux = primeira.prox;
-
-        primeira.prox = new Celula(item, aux);
-        primeira.prox.prox = aux;
-
-        if (aux == null)
-            ultima = primeira.prox;
+    public void empilhar(Serie item) {
+        topo = new Celula(item, topo);
         n++;
     }
 
-    /**
-     * Insere um elemento na ultima posição da lista.
-     * 
-     * 
-     * @param item a ser inserido.
-     */
-    public void inserirFim(Serie item) {
-        ultima.prox = new Celula(item);
-        ultima = ultima.prox;
-        n++;
-    }
-
-    /**
-     * Insere um elemento em uma posição especifica e move os demais elementos para
-     * o fim da lista.
-     * 
-     * 
-     * @param item: elemento a ser inserido.
-     * @param pos:  posição de insercao.
-     * @return false caso a posição seja inválida
-     */
-    public boolean inserir(Serie item, int pos) {
-        boolean retorno = false;
-
-        if ((pos >= 1) && (pos <= n) && (primeira != ultima)) {
-            int i = 0;
-            Celula aux = primeira;
-
-            while (i < pos) {
-                aux = aux.prox;
-                i++;
-            }
-
-            Celula nova = new Celula(item, aux.prox);
-            aux.prox = nova;
-            n++;
-
-            retorno = true;
-        }
-        return retorno;
-    }
-
-    /**
-     * Remove um elemento da primeira posicao da lista e movimenta os demais
-     * elementos para o inicio da mesma.
-     * 
-     * @return Elemento a ser removido.
-     * @return null caso a lista não possua nenhum elemento.
-     */
-    public Serie removerInicio() {
+    public Serie desempilhar() {
         Serie retorno = null;
-
-        if (primeira != ultima) {
-            Celula aux = primeira.prox;
-            primeira.prox = aux.prox;
-
-            if (primeira.prox == null)
-                ultima = primeira;
-
+        if (topo != null) {
+            retorno = topo.elemento;
+            topo = topo.prox;
             n--;
-            retorno = aux.elemento;
-        }
+        } 
+
         return retorno;
     }
 
-    /**
-     * Remove um elemento da ultima posicao da lista.
-     * 
-     * 
-     * @return Elemento a ser removido.
-     * @return null caso a lista não possua nenhum elemento.
-     */
-    public Serie removerFim() {
-        Serie retorno = null;
-
-        if (primeira != ultima) {
-            Celula aux = primeira;
-
-            while (aux.prox != ultima)
-                aux = aux.prox;
-
-            Celula temp = aux.prox;
-            ultima = aux;
-            ultima.prox = null;
-
-            n--;
-            retorno = temp.elemento;
-        }
-        return retorno;
-    }
-
-    /**
-     * Remove um elemento de uma posicao especifica da lista e movimenta os demais
-     * elementos para o inicio da mesma.
-     * 
-     * 
-     * @param pos: Posicao de remocao.
-     * 
-     * @return Elemento a ser removido.
-     * @return null caso a posição seja inválida
-     */
-    public Serie remover(int pos) {
-        Serie retorno = null;
-
-        if ((pos >= 1) && (pos <= n) && (primeira != ultima)) {
-            int i = 0;
-            Celula aux = primeira;
-
-            while (i < pos) {
-                aux = aux.prox;
-                i++;
-            }
-
-            Celula temp = aux.prox;
-            aux.prox = aux.prox.prox;
-
-            if (aux.prox == null)
-                ultima = aux;
-
-            n--;
-            retorno = temp.elemento;
-        }
-        return retorno;
-    }
-
-    /**
-     * Printa todos os elementos da lista
-     */
     public void mostrar() {
-        for (Celula i = primeira.prox; i != null; i.elemento.imprimir(), i = i.prox)
-            ;
+        for (Celula i = topo; i != null; i = i.prox) {
+            i.elemento.imprimir();
+        }
     }
 }
 
-class TP03Q11 {
+class TP03Q12 {
     public static boolean isFim(String s) {
         return (s.length() == 3 && s.charAt(0) == 'F' && s.charAt(1) == 'I' && s.charAt(2) == 'M');
     }
@@ -443,20 +303,18 @@ class TP03Q11 {
         } while (isFim(entrada[numEntrada++]) == false);
         numEntrada--; // Desconsiderar última linha contendo FIM
 
-        Lista lista = new Lista();
+        Pilha pilha = new Pilha();
 
         for (int i = 0; i < numEntrada; i++) {
             Serie serie = new Serie();
 
             try {
                 serie.ler(entrada[i]);
+                pilha.empilhar(serie);
             } catch (Exception e) {
             }
-            lista.inserirFim(serie);
         }
 
-        // lista.mostrar();
-        // MyIO.println("--------------");
         entrada = new String[1000];
         String temp = MyIO.readLine().trim();
         numEntrada = 0;
@@ -467,55 +325,24 @@ class TP03Q11 {
         for (int i = 0; i < numEntrada; i++) {
             Serie serie = new Serie();
             String linha = MyIO.readLine();
-            // MyIO.println("linha " + i + ": " + linha);
-            String comando = "" + linha.charAt(0) + linha.charAt(1);
+            String comando = "" + linha.charAt(0);
             int pos = 0;
-            if (comando.equals("II") == true) {
+            if (comando.equals("I") == true) {
                 try {
-                    serie.ler(linha.substring(3).trim());
-                    lista.inserirInicio(serie);
-                } catch (Exception e) {
-                }
+                    serie.ler(linha.substring(2).trim());
+                    pilha.empilhar(serie);
+                } catch (Exception e) {}
 
-            } else if (comando.equals("I*") == true) {
-                pos = Integer.parseInt(linha.substring(3, 5));
+            } else if (comando.equals("R") == true) {
                 try {
-                    serie.ler(linha.substring(6).trim());
-                    lista.inserir(serie, pos);
-                } catch (Exception e) {
-                }
-
-            } else if (comando.equals("IF") == true) {
-                try {
-                    serie.ler(linha.substring(3).trim());
-                    lista.inserirFim(serie);
-                } catch (Exception e) {
-                }
-
-            } else if (comando.equals("RI") == true) {
-                try {
-                    serie = lista.removerInicio();
-                    System.out.println("(R) " + serie.getNome());
-                } catch (Exception e) {
-                }
-
-            } else if (comando.equals("R*") == true) {
-                try {
-                    pos = Integer.parseInt(linha.substring(3, 5));
-                    serie = lista.remover(pos);
-                    System.out.println("(R) " + serie.getNome());
-                } catch (Exception e) {
-                }
-
-            } else if (comando.equals("RF") == true) {
-                try {
-                    serie = lista.removerFim();
-                    System.out.println("(R) " + serie.getNome());
-                } catch (Exception e) {
-                }
+                    serie = pilha.desempilhar();
+                    if (serie != null)
+                        System.out.println("(R) " + serie.getNome());
+                } catch (Exception e) {}
 
             }
         }
-        lista.mostrar();
+        
+        pilha.mostrar();
     }
 }
