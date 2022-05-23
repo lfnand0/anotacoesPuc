@@ -19,6 +19,7 @@ public class Manager {
    * dbPath: diretório onde a base de dados será armazenada
    */
   private String dbPath = "";
+  // protected ManagerIndex manIndex = new ManagerIndex();
 
   /**
    * Construtor básico
@@ -38,7 +39,7 @@ public class Manager {
    * @return boolean: true ou false caso a operação seja
    *         bem-sucedida ou não
    */
-  private static boolean dbExists(String dbPath) {
+  public static boolean dbExists(String dbPath) {
     boolean exists = false;
     RandomAccessFile arq;
 
@@ -88,74 +89,6 @@ public class Manager {
   }
 
   /**
-   * Busca a posição do ponteiro no início do registro cujo ID
-   * é equivalente ao recebido por parâmetro
-   * 
-   * O ponteiro retornado é na posição da lápide do registro,
-   * portanto caso realizemos a leitura a partir de então, teremos
-   * inicialmente o tamanho do array de bytes, seguido pelo array
-   * em si
-   * 
-   * @param id: ID do registro a ser pesquisado
-   * @return long: ponteiro do registro
-   */
-  public static long findIdPointer(int id) {
-    long returns = -1;
-    RandomAccessFile arq;
-    String dbPath = "../db/bank.db";
-
-    try {
-      arq = new RandomAccessFile(dbPath, "rw");
-
-      arq.seek(0);
-      int maxId = arq.readInt();
-
-      if (id <= maxId) {
-        int foundId = 0;
-        long pointer = arq.getFilePointer();
-        /**
-         * Ao atualizarmos um registro, existe a possibilidade
-         * de que um registro com o mesmo ID permaneça na posição
-         * antiga, porém com a lápide = false
-         * 
-         * Por isso, é importante, durante a pesquisa, checar a
-         * lápide do registro, o tamanho do array de bytes e o ID
-         * 
-         * Antes do if...else seguinte, o ponteiro estará posicionado
-         * após o ID --- caso não seja o registro que estamos buscando,
-         * voltamos 4 casas para nos posicionarmos antes do array de
-         * bytes, e depois pulamos para depois do array, na posição
-         * exata do início do próximo registro.
-         * 
-         * Esse processo é realizado até chegarmos no fim do arquivo,
-         * ou encontrarmos o registro pesquisado
-         */
-        while (pointer < arq.length() - 4) {
-          boolean lapide = arq.readBoolean();
-          int tam = arq.readInt();
-
-          foundId = arq.readInt();
-          pointer = arq.getFilePointer();
-
-          if (foundId != id || !lapide) {
-            pointer += tam - 4; // Antes da lápide
-            arq.seek(pointer);
-          } else {
-            pointer -= 8;
-            returns = pointer;
-            break;
-          }
-        }
-      }
-
-      arq.close();
-    } catch (Exception e) {
-    }
-
-    return returns;
-  }
-
-  /**
    * Adiciona um array de bytes ao fim do arquivo
    * 
    * @param ba: Array de bytes a ser adicionado ao arquivo
@@ -188,25 +121,24 @@ public class Manager {
    *         seja inválido, ou um objeto contendo os atributos
    *         coletados do registro
    */
-  public static Dao read(int id) {
+  public static Dao read(long pos) {
     byte[] ba;
     RandomAccessFile arq;
     Dao conta = new Dao();
     String dbPath = "../db/bank.db";
 
-    if (findIdPointer(id) == -1 || id <= 0) {
-      return conta;
-    }
-
     try {
       arq = new RandomAccessFile(dbPath, "rw");
-      arq.seek(findIdPointer(id));
-      int tam = arq.readInt();
-      ba = new byte[tam];
-      arq.read(ba);
-      conta.fromByteArray(ba);
+      if (pos < arq.length()) {
+        arq.seek(pos + 1);
+        int tam = arq.readInt();
+        ba = new byte[tam];
+        arq.read(ba);
+        conta.fromByteArray(ba);
 
-      arq.close();
+        arq.close();
+      }
+
     } catch (Exception e) {
       System.out.println(e);
     }
@@ -229,22 +161,22 @@ public class Manager {
    * @return boolean: true ou false caso a operação seja
    *         bem-sucedida
    */
-  public boolean update(byte[] ba, int id) {
+  public boolean update(byte[] ba, long pos) {
     RandomAccessFile arq;
 
-    if (ba.length == 0 || findIdPointer(id) == -1) {
+    if (ba.length == 0 || pos < 0) {
       return false;
     }
 
     try {
       arq = new RandomAccessFile(dbPath, "rw");
-      arq.seek(findIdPointer(id));
+      arq.seek(pos + 1);
       int tam = arq.readInt();
 
       if (ba.length <= tam) {
         arq.write(ba);
       } else {
-        delete(id);
+        delete(pos);
         appendToFile(ba);
       }
     } catch (Exception e) {
@@ -261,13 +193,13 @@ public class Manager {
    * @return boolean: true ou false caso a operação seja
    *         bem-sucedida
    */
-  public boolean delete(int id) {
+  public boolean delete(long pos) {
     RandomAccessFile arq;
     boolean tf = false;
 
     try {
       arq = new RandomAccessFile(dbPath, "rw");
-      long pos = findIdPointer(id) - 1;
+      // pos = pos - 1;
 
       if (pos > 0) {
         arq.seek(pos);
@@ -280,4 +212,5 @@ public class Manager {
     }
     return tf;
   }
+
 }

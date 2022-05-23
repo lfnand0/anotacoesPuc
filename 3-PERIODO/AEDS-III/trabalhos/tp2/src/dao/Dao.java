@@ -6,16 +6,15 @@ import java.util.*;
 
 import manager.*;
 
-
 /**
  * CLASSE DAO
  * 
  * Segunda camada da execução do programa, responsável
- * por organizar e armazenar temporariamente os dados, 
+ * por organizar e armazenar temporariamente os dados,
  * receber ordens do App.java,validar inputs e por fim
  * realizar chamadas ao Manager
  * 
- * Não realiza operações diretamente no arquivo 
+ * Não realiza operações diretamente no arquivo
  * 
  */
 public class Dao {
@@ -28,6 +27,7 @@ public class Dao {
   protected int transferenciasRealizadas;
   protected float saldoConta;
   protected Manager manager = new Manager("../db/bank.db");
+  protected ManagerIndex manIndex = new ManagerIndex("../db/bank.db");
 
   /* CONSTRUTORES */
 
@@ -134,6 +134,7 @@ public class Dao {
   public int create() {
     try {
       if (manager.appendToFile(toByteArray())) {
+        manIndex.readDb();
         return this.idConta;
       }
     } catch (Exception e) {
@@ -155,7 +156,7 @@ public class Dao {
   public static Dao read(int id) {
     Dao conta = new Dao();
 
-    conta = Manager.read(id);
+    conta = Manager.read(ManagerIndex.findIdPointer(id));
 
     return conta;
   }
@@ -179,8 +180,7 @@ public class Dao {
    *         caso seja bem-sucedida.
    */
   public boolean update() {
-
-    if (Manager.findIdPointer(this.idConta) == -1) {
+    if (ManagerIndex.findIdPointer(this.idConta) == -1) {
       return false;
     }
 
@@ -257,7 +257,8 @@ public class Dao {
       this.saldoConta = (saldoContaNovo != this.saldoConta) ? saldoContaNovo : this.saldoConta;
 
       try {
-        retorno = manager.update(toByteArray(), this.idConta);
+        retorno = manager.update(toByteArray(), ManagerIndex.findIdPointer(this.idConta));
+        manIndex.readDb();
       } catch (Exception e) {
       }
 
@@ -284,7 +285,9 @@ public class Dao {
    *         seja bem-sucedida, false caso contrário
    */
   public boolean delete(int id) {
-    return manager.delete(id);
+    boolean retorno = manager.delete(ManagerIndex.findIdPointer(id));
+    manIndex.readDb();
+    return retorno;
   }
 
   /**
@@ -311,10 +314,11 @@ public class Dao {
 
       try {
         byte[] ba = this.toByteArray();
-        manager.update(ba, this.idConta); // Conta 1
+        manager.update(ba, ManagerIndex.findIdPointer(this.idConta)); // Conta 1
 
         ba = conta.toByteArray();
-        manager.update(ba, conta.getId());
+        manager.update(ba, ManagerIndex.findIdPointer(conta.getId()));
+        manIndex.readDb();
       } catch (Exception e) {
       }
 
@@ -323,6 +327,35 @@ public class Dao {
 
     return retorno;
   }
+
+  public static int[] search(String path, String key) {
+    // String namePath = "../db/nameList.db";
+    RandomAccessFile arq;
+
+    // int retorno[];
+
+    try {
+      arq = new RandomAccessFile(path, "rw");
+      arq.seek(0);
+      for (long pos = 0; pos < arq.length(); pos = arq.getFilePointer()) {
+        String aux = arq.readUTF();
+        int numIds = arq.readInt();
+        if (aux.equals(key)) {
+          int retorno[] = new int[numIds];
+          for (int i = 0; i < numIds; i++) {
+            retorno[i] = arq.readInt();
+          }
+          arq.close();
+          return retorno;
+        }
+      }
+
+      arq.close();
+    } catch (Exception e) {}
+    return null;
+  }
+  
+  
 
   /**
    * Função auxiliar que imprime os atributos
@@ -359,6 +392,7 @@ public class Dao {
     dos.writeInt(this.transferenciasRealizadas);
     dos.writeFloat(this.saldoConta);
 
+    dos.close();
     return baos.toByteArray();
   }
 
@@ -409,7 +443,7 @@ public class Dao {
   public static boolean idIsValid(int id) {
     boolean returns = false;
 
-    if (Manager.findIdPointer(id) != -1)
+    if (ManagerIndex.findIdPointer(id) != -1)
       returns = true;
 
     return returns;

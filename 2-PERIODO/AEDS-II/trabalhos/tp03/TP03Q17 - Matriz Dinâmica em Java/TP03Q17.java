@@ -162,7 +162,7 @@ class Serie {
         nome = nome.replace('_', ' ');
         this.nome = nome;
 
-        html = "/tmp/series/" + html;
+        html = "../tmp/series/" + html;
 
         InputStreamReader isr = new InputStreamReader(new FileInputStream(html));
         BufferedReader br = new BufferedReader(isr);
