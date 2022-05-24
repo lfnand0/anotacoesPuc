@@ -30,8 +30,6 @@ public class App {
      */
     public static int bankInterface() {
         int choice = 0;
-        // ManagerIndex manInd = new ManagerIndex("../db/bank.db");
-        // manInd.test();
 
         System.out.println("\n-----Conta Bancária-----");
 
@@ -52,7 +50,7 @@ public class App {
 
         int id;
         switch (choice) {
-            case 1:
+            case 1: // Criar uma conta bancária
                 System.out.print("\nDigite o nome: ");
                 sc.nextLine();
                 String nome = sc.nextLine();
@@ -74,7 +72,7 @@ public class App {
                 }
                 break;
 
-            case 2:
+            case 2: // Realizar uma transferência
                 System.out.print("\nDigite o ID da sua conta: ");
                 int idA = sc.nextInt();
 
@@ -110,7 +108,7 @@ public class App {
                 }
                 break;
 
-            case 3:
+            case 3: // Ler um registro
                 System.out.print("\nDigite o ID da conta que deseja buscar: ");
                 id = sc.nextInt();
 
@@ -133,7 +131,7 @@ public class App {
 
                 break;
 
-            case 4:
+            case 4: // Atualizar um registro
                 System.out.print("\nDigite o ID da conta a ser atualizada: ");
                 id = sc.nextInt();
 
@@ -151,7 +149,7 @@ public class App {
 
                 break;
 
-            case 5:
+            case 5: // Deletar um registro
                 System.out.print("\nDigite o ID da conta a ser deletada: ");
                 id = sc.nextInt();
 
@@ -169,7 +167,7 @@ public class App {
                 }
                 break;
 
-            case 6:
+            case 6: // Pesquisar
                 System.out.println("1. Pesquisar um nome;");
                 System.out.println("2. Pesquisar uma cidade;");
                 System.out.println("3. Cancelar;");
@@ -204,7 +202,7 @@ public class App {
 
                 break;
 
-            case 7:
+            case 7: // Sair
                 System.out.println("Até mais!");
                 break;
         }
@@ -213,8 +211,7 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-        while (bankInterface() != 7)
-            ;
+        while (bankInterface() != 7);
 
         sc.close();
     }

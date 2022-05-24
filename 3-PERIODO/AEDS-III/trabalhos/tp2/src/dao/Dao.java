@@ -328,11 +328,24 @@ public class Dao {
     return retorno;
   }
 
+  /**
+   * SEARCH: Pesquisa um item nas listas invertidas
+   * (de nome ou de cidade)
+   * 
+   * Abre o arquivo passado como parâmetro, pesquisa
+   * pela chave e retorna todos os ids que possuem
+   * essa chave (como nome ou cidade, dependendo do
+   * path)
+   * 
+   * @param path: Diretório onde a lista invertida
+   *              se encontra
+   * @param key:  Chave a ser pesquisada
+   * 
+   * @return int[]: Array com todos os ids
+   *         encontrados, ou null
+   */
   public static int[] search(String path, String key) {
-    // String namePath = "../db/nameList.db";
     RandomAccessFile arq;
-
-    // int retorno[];
 
     try {
       arq = new RandomAccessFile(path, "rw");

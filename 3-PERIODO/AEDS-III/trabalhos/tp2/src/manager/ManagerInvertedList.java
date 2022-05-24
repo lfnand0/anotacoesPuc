@@ -2,18 +2,46 @@ package manager;
 
 import java.io.*;
 
+/**
+ * CLASSE INVERTED LIST
+ * 
+ * Classe auxiliar, gera um array de strings
+ * contendo todos os nomes ou cidades do banco
+ * de dados, juntamente com outro contendo todos
+ * os ids que possuem tal nome/cidade, e depois
+ * os ordena
+ * 
+ */
 class InvertedList {
   String str[];
   int ids[][];
   int numIds[];
   int numStrs = 0;
 
+  /**
+   * Construtor da classe
+   * 
+   * @param maxId: Maior id da lista, utilizado
+   *               para gerar os arrays (já que
+   *               , como os ids são acumulativos,
+   *               nunca haverão mais nomes/ids
+   *               do que o maior id no banco de
+   *               dados)
+   */
   public InvertedList(int maxId) {
     this.str = new String[maxId + 1];
     this.ids = new int[maxId + 1][maxId + 1];
     this.numIds = new int[maxId + 1];
   }
 
+  /**
+   * Insere uma string no array, fazendo a checagem
+   * se alguma das posições já contem essa string,
+   * e em sequência insere o id na localização correta
+   * 
+   * @param s:  string a ser inserida
+   * @param id: id da string
+   */
   public void insert(String s, int id) {
     boolean found = false;
     for (int i = 0; i < numStrs; i++) {
@@ -29,6 +57,10 @@ class InvertedList {
     }
   }
 
+  /**
+   * Ordena os arrays
+   * 
+   */
   public void sort() {
     // Ordenar strings
     for (int i = 0; i < numStrs; i++) {
@@ -73,6 +105,12 @@ class InvertedList {
     }
   }
 
+  /**
+   * Escreve a lista invertida formatada corretamente
+   * à um arquivo
+   * 
+   * @param path: diretório onde o arquivo será escrito
+   */
   public void writeToFile(String path) {
     sort();
     RandomAccessFile arq;
@@ -94,7 +132,21 @@ class InvertedList {
   }
 }
 
+/**
+ * CLASSE MANAGER INVERTED LIST
+ * 
+ * Responsável pela geração das listas invertidas,
+ * lendo o banco de dados e criando tanto a lista de
+ * nomes, quanto a lista de cidades
+ * 
+ */
 public class ManagerInvertedList {
+
+  /**
+   * Gera as listas (a ordenação é feita na classe
+   * InvertedList)
+   * 
+   */
   public static void generateLists() {
     RandomAccessFile dbArq;
     String dbPath = "../db/bank.db";

@@ -19,7 +19,6 @@ public class Manager {
    * dbPath: diretório onde a base de dados será armazenada
    */
   private String dbPath = "";
-  // protected ManagerIndex manIndex = new ManagerIndex();
 
   /**
    * Construtor básico
@@ -116,7 +115,7 @@ public class Manager {
    * do registro cujo ID seja equivalente ao
    * recebido como parâmetro
    * 
-   * @param id: ID do registro a ser lido
+   * @param pos: posição do registro a ser lido
    * @return Dao: retorna um objeto inválido caso o ID
    *         seja inválido, ou um objeto contendo os atributos
    *         coletados do registro
@@ -156,8 +155,8 @@ public class Manager {
    * original, sobrescrevemos o registro com o novo array de
    * bytes
    * 
-   * @param ba: Novo array de bytes
-   * @param id: ID do registro a ser atualizado
+   * @param ba:  Novo array de bytes
+   * @param pos: posição do registro a ser atualizado
    * @return boolean: true ou false caso a operação seja
    *         bem-sucedida
    */
@@ -189,7 +188,7 @@ public class Manager {
   /**
    * Altera a lápide de um registro para false
    * 
-   * @param id: ID do registro a ser deletado
+   * @param pos: posição do registro a ser deletado
    * @return boolean: true ou false caso a operação seja
    *         bem-sucedida
    */

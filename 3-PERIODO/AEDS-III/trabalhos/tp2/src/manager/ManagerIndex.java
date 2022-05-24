@@ -2,24 +2,41 @@ package manager;
 
 import java.io.*;
 
+/**
+ * CLASSE MANAGER INDEX
+ * 
+ * Responsável pela criação e organização do arquivo
+ * de índices. Possui funções para leitura do banco
+ * de dados e criação do arquivo indexado, ordenação
+ * dos registros, etc.
+ * 
+ * 
+ */
 public class ManagerIndex {
+  /**
+   * dbPath: Diretório do banco de dados
+   * indexPath: Diretório do arquivo de índices
+   */
   private String dbPath = "";
   private String indexPath = "";
 
+  /**
+   * Construtor da classe
+   * 
+   * @param dbPath: diretório do banco de dados
+   */
   public ManagerIndex(String dbPath) {
     this.dbPath = dbPath;
     this.indexPath = "../db/bankIndex.db";
   }
 
-  public void test() {
-    RandomAccessFile arq;
-    try {
-      arq = new RandomAccessFile(indexPath, "rw");
-      arq.setLength(0);
-    } catch (Exception e) {
-    }
-  }
-
+  /**
+   * Itera pelo arquivo do banco de dados, coletando
+   * os índices e a posição dos registros, e depois
+   * chama a função que irá ordenar esse arquivo de
+   * índices
+   * 
+   */
   public void readDb() {
     RandomAccessFile dbArq, indexArq;
 
@@ -55,6 +72,15 @@ public class ManagerIndex {
     }
   }
 
+  /**
+   * Função auxiliar, recebe dois arrays e os ordena
+   * de acordo com os valores de idArr
+   * 
+   * @param idArr:  Array com os ids coletados
+   * @param posArr: Array com as posições dos
+   *                registros
+   * @param size:   Tamanho dos arrays
+   */
   public void sort(int idArr[], long posArr[], int size) {
     for (int i = 0; i < size; i++) {
       int menor = i;
@@ -76,6 +102,10 @@ public class ManagerIndex {
     }
   }
 
+  /**
+   * Ordena o arquivo de índices
+   * 
+   */
   public void sortArq() {
     RandomAccessFile arq;
     try {
@@ -105,6 +135,14 @@ public class ManagerIndex {
     }
   }
 
+  /**
+   * Itera pelo arquivo de índices, e retorna
+   * a posição de um registro com id "id"
+   * 
+   * @param id: id a ser pesquisado
+   * @return long: posição no arquivo, ou -1 caso
+   *         o id não seja encontrado
+   */
   public static long findIdPointer(int id) {
     RandomAccessFile arq;
     String dbPath = "../db/bankIndex.db";
