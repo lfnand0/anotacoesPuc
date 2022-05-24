@@ -347,15 +347,16 @@ public class Dao {
           }
           arq.close();
           return retorno;
+        } else {
+          arq.seek(arq.getFilePointer() + (4 * numIds));
         }
       }
 
       arq.close();
-    } catch (Exception e) {}
+    } catch (Exception e) {
+    }
     return null;
   }
-  
-  
 
   /**
    * Função auxiliar que imprime os atributos

@@ -177,26 +177,31 @@ public class App {
                 int pesq = sc.nextInt();
                 while (pesq < 1 || pesq > 3) {
                     System.out.print("Selecione uma opção válida: ");
-                    choice = sc.nextInt();
+                    pesq = sc.nextInt();
                 }
 
-                String pesqStr = "";
-                System.out.print(pesq == 1 ? "Digite o nome a ser pesquisado: " : "Digite a cidade a ser pesquisada: ");
-                pesqStr = sc.nextLine();
+                sc.nextLine();
+                if (pesq < 3) {
+                    String pesqStr = "";
+                    System.out.print(
+                            pesq == 1 ? "Digite o nome a ser pesquisado: " : "Digite a cidade a ser pesquisada: ");
+                    pesqStr = sc.nextLine();
 
-                int resp[] = Dao.search(pesq == 1 ? "../db/nameList.db" : "../db/cityList.db", pesqStr);
+                    int resp[] = Dao.search(pesq == 1 ? "../db/nameList.db" : "../db/cityList.db", pesqStr);
 
-                if (resp != null) {
-                    System.out.print("IDs encontrados: {");
-                    for (int i = 0; i < resp.length; i++) {
-                        System.out.print(resp[i]);
-                        if (i + 1 < resp.length)
-                            System.out.print(", ");
+                    if (resp != null) {
+                        System.out.print("IDs encontrados: {");
+                        for (int i = 0; i < resp.length; i++) {
+                            System.out.print(resp[i]);
+                            if (i + 1 < resp.length)
+                                System.out.print(", ");
+                        }
+                        System.out.print("}\n");
+                    } else {
+                        System.out.println("Nenhum resultado encontrado para sua busca.");
                     }
-                    System.out.print("}\n");
-                } else {
-                    System.out.println("Nenhum resultado encontrado para sua busca.");
                 }
+
                 break;
 
             case 7:
