@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% Template de Artigo Adaptado para Trabalho de Diplomação do ICEI %%%%%%%%%%%%%%%%%%%%%%%%
+%% codificação UTF-8 - Abntex - Latex -  							     %%
+%% Autor:    Fábio Leandro Rodrigues Cordeiro  (fabioleandro@pucminas.br)                            %% 
+%% Co-autor: Prof. João Paulo Domingos Silva, Harison da Silva e Anderson Carvalho                   %%
+%% Revisores normas NBR (Padrão PUC Minas): Helenice Rego Cunha e Prof. Theldo Cruz                  %%
+%% Versão: 1.1     18 de dezembro 2015                     	                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[a4paper,12pt,Times]{article}
+\usepackage{abakos}  %pacote com padrão da Abakos baseado no padrão da PUC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capa da revista
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setcounter{page}{80} %iniciar contador de pagina de valor especificado
+\newcommand{\monog}{Experimentos com Caminhos Disjuntos: Teoria dos Grafos e Computabilidade}
+\newcommand{\tipo}{Artigo }  % Especificar a seção tipo do trabalho: Artigo, Resumo, Tese, Dociê etc
+\newcommand{\origem}{Brasil }
+\newcommand{\editorial}{Belo Horizonte, p. 01-11, dez. 2022}  % p. xx-xx – páginas inicial-final do artigo
+\newcommand{\lcc}{\scriptsize{Licença Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported}}
+
+%%%%%%%%%%%%%%%%%INFORMAÇÕES SOBRE AUTOR PRINCIPAL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\AutorA}{Luiz Fernando Oliveira Maciel}
+\newcommand{\funcaoA}{}
+\newcommand{\emailA}{lfomaciel@sga.pucminas.br}
+\newcommand{\cursA}{Aluno do Programa de Graduação em Ciência da Computação}
+
+\newcommand{\AutorB}{Vinicius Ferreira de Souza}
+\newcommand{\funcaoB}{}
+\newcommand{\emailB}{vfsouza@sga.pucminas.br}
+\newcommand{\cursB}{Aluno do Programa de Graduação em Ciência da Computação}
+% 
+% Definir macros para o nome da Instituição, da Faculdade, etc.
+\newcommand{\univ}{Pontifícia Universidade Católica de Minas Gerais}
+
+\newcommand{\keyword}[1]{\textsf{#1}}
+
+\begin{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Pagina de titulo
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\includegraphics[scale=0.2]{figuras/brasao.jpg} \\
+PONTIFÍCIA UNIVERSIDADE CATÓLICA DE MINAS GERAIS \\
+Instituto de Ciências Exatas e de Informática
+
+% \vspace{1.0cm}
+
+\end{center}
+
+ \vspace{0cm} {
+ \singlespacing \Large{\monog}
+ }
+
+\vspace{1.0cm}
+
+\begin{flushright}
+\singlespacing 
+\normalsize{\AutorA \footnote{\funcaoA \cursA, \origem -- \emailA . }} \\
+\normalsize{\AutorB \footnote{\funcaoB \cursB, \origem -- \emailB . }} \\
+%\normalsize{\AutorC \footnote{\funcaoC \cursC, \origem -- \emailC . }} \\
+%\normalsize{\AutorD \footnote{\funcaD \cursD, \origem -- \emailD . }} \\
+%deixar com o valor `0` e usar o '*' no inicio da frase
+% \symbolfootnote[0]{Artigo recebido em 10 de julho de 1983 e aprovado em 29 de maio 2012}
+\end{flushright}
+\thispagestyle{empty}
+
+\vspace{1.0cm}
+
+\begin{abstract}
+\noindent
+Este artigo tem como objetivo apresentar o algoritmo desenvolvido para encontrar caminhos disjuntos em grafos e analisar o comportamento desse algoritmo em diferentes tipos de grafos.
+Artigo feito como parte do Trabalho Prático 2 da matéria Teoria dos Grafos e Computabilidade, do 4º período do curso de Ciência da Computação da PUC Minas PPL.
+\\\textbf{\keyword{Palavras-chave: }} Teoria dos Grafos e Computabilidade. Caminhos Disjuntos.
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \newpage    %%%% CASO QUEIRA QUE O RESUMO FIQUE EM UMA PAGINA E O ABSTRACT EM OUTRA
+
+\selectlanguage{brazilian}
+ \onehalfspace  % espaçamento 1.5 entre linhas
+ \setlength{\parindent}{1.25cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INICIO DO TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{textos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FIM DO TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \selectlanguage{brazil}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Inicio bibliografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \newpage
+\singlespace{
+\renewcommand\refname{REFERÊNCIAS}
+\bibliographystyle{abntex2-alf}
+\bibliography{bibliografia}
+
+}
+
+\end{document}
+
+

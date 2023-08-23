@@ -1,0 +1,46 @@
+<!ELEMENT AmnesiaConfiguration (Processor,Trace,CPU, MainMemory, Cache*, VirtualMemory?)>
+
+        <!--AMNESIA CONFIGURABLE MODULES -->
+        <!ELEMENT Processor (processorContains, createTraceFile)>
+        <!ELEMENT Trace (wordSize)>
+        <!ELEMENT CPU (wordSize)>
+        <!ELEMENT MainMemory (blockSize, memorySize, ciclesPerAccessRead, ciclesPerAccessWrite, timeCicle, ciclesPerAccess)>
+        <!ELEMENT Cache (cacheType, ((instructionCache, dataCache) | (unifiedCache)))*>
+        <!ELEMENT VirtualMemory (pageSize, diskMemorySize, diskCiclesPerAccess,diskCiclesPerAccessWrite,diskCiclesPerAccessRead, timeCicle,pageTableReplacementAlgorithm, TLBType, ((instructionTLB, dataTLB)|unifiedTLB)?)>
+
+
+        <!--CACHE CONFIGURABLE ELEMENTS -->
+        <!ELEMENT instructionCache (lineSize, ciclesPerAccess,ciclesPerAccessRead, ciclesPerAccessWrite, timeCicle, memorySize, associativityLevel, writePolicy, replacementAlgorithm)>
+        <!ELEMENT dataCache (lineSize, ciclesPerAccess,ciclesPerAccessRead, ciclesPerAccessWrite, timeCicle, memorySize, associativityLevel, writePolicy, replacementAlgorithm)>
+        <!ELEMENT unifiedCache (lineSize, ciclesPerAccess,ciclesPerAccessRead, ciclesPerAccessWrite, timeCicle, memorySize, associativityLevel, writePolicy, replacementAlgorithm)>
+
+        <!ELEMENT instructionTLB ( ciclesPerAccess, ciclesPerAccessRead, ciclesPerAccessWrite, timeCicle,memorySize, replacementAlgorithm)>
+        <!ELEMENT dataTLB ( ciclesPerAccess,ciclesPerAccessRead, ciclesPerAccessWrite, timeCicle, memorySize, replacementAlgorithm)>
+        <!ELEMENT unifiedTLB ( ciclesPerAccess,ciclesPerAccessRead, ciclesPerAccessWrite, timeCicle, memorySize, replacementAlgorithm)>
+
+
+        <!--DATA TYPE -->
+        <!ELEMENT cacheType (#PCDATA)>
+
+        <!ELEMENT blockSize (#PCDATA)>
+        <!ELEMENT wordSize (#PCDATA)>
+        <!ELEMENT lineSize (#PCDATA)>
+        <!ELEMENT ciclesPerAccess (#PCDATA)>
+        <!ELEMENT memorySize (#PCDATA)>
+        <!ELEMENT associativityLevel (#PCDATA)>
+        <!ELEMENT writePolicy (#PCDATA)>
+        <!ELEMENT replacementAlgorithm (#PCDATA)>
+        <!ELEMENT pageSize (#PCDATA)>
+        <!ELEMENT diskMemorySize (#PCDATA)>
+        <!ELEMENT registerOffset (#PCDATA)>
+        <!ELEMENT TLBType (#PCDATA)>
+        <!ELEMENT pageTableReplacementAlgorithm (#PCDATA)>
+
+        <!ELEMENT processorContains (#PCDATA)>
+        <!ELEMENT createTraceFile (#PCDATA)>
+        <!ELEMENT ciclesPerAccessRead (#PCDATA)>
+        <!ELEMENT ciclesPerAccessWrite (#PCDATA)>
+        <!ELEMENT timeCicle (#PCDATA)>
+        <!ELEMENT diskCiclesPerAccess (#PCDATA)>
+        <!ELEMENT diskCiclesPerAccessRead (#PCDATA)>
+        <!ELEMENT diskCiclesPerAccessWrite (#PCDATA)>

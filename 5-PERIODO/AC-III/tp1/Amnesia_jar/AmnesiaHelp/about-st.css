@@ -1,0 +1,67 @@
+/*
+ * Copyright (c) 2015. Carlos Emilio de Andrade Cacho
+ * This file is part of Amnesia.
+ *
+ *     Amnesia is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Foobar is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Amnesia.  If not, see <http://www.gnu.org/licenses/>.
+ */
+span.title{
+    color: darkblue;
+    font-size: 4rem;
+    margin: 1rem;
+}
+
+.logo1, .logo2, .logo3 {
+    text-align: center;
+    height: 3rem;
+    padding: 0.5rem 2rem;
+}
+
+.Logo {
+    padding-bottom: 0rem;
+    border-bottom: 1px solid #aaa;
+    text-align: center;
+}
+
+.logo1 {
+    float: left;
+}
+
+.logo2 {
+    margin-left: 3rem;
+    height: 4rem;
+}
+
+.logo3 {
+    float: right;
+}
+
+.title, .License {
+    display: block;
+    text-align: center;
+}
+
+.License img {
+    height: 2.5rem;
+}
+
+.License p {
+    font-size: 0.8rem;
+    width: 95%;
+    margin: 0.5rem auto;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}

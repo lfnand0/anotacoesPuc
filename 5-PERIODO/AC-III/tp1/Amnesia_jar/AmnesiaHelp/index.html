@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head lang="pt-br">
+    <meta charset="UTF-8">
+    <title>Tutorial</title>
+    <link rel="stylesheet" type="text/css" href="model.css">
+</head>
+<body>
+
+
+<div id="menu" >
+    <span class="title">Amnesia</span>
+    <p class="subtitle">Tutorial técnico do módulo cache</p>
+    <h3>MENU</h3>
+    <h3><a href="#skip-intro">Introdução</a></h3>
+    <h3><a href="#skip-Requisite">Requisitos</a></h3>
+    <h3><a href="#skip-Execute">Execução</a></h3>
+    <ul class="menu">
+        <li><a href="#skip-ExecuteOA">1)	Executar o objeto de aprendizagem</a></li>
+        <li><a href="#skip-openAA">2)	Abrir um arquivo de Arquitetura</a></li>
+        <li><a href="#skip-openAT">3)	Abrir um arquivo de trace</a></li>
+        <li><a href="#skip-DirectEX">4)	Execução direta</a></li>
+        <li><a href="#skip-StepEX">5)	Execução Passo a Passo</a> </li>
+        <li><a href="#skip-saveLE">6)	Salvamento do log de execução</a> </li>
+
+    </ul>
+    <h3><a href="#skip-ComplementInfo">Informações complementares</a></h3>
+    <ul class="menu">
+        <li><a href="#skip-arch-arq">1)	Arquivos de arquitetura</a></li>
+        <li><a href="#skip-trace-arq">2)	Arquivos de trace</a></li>
+
+    </ul>
+</div>
+
+<div id="blank_left">
+    <img src="imagens/faixa.png">
+</div>
+
+<div id="content">
+
+
+<div id="skip-intro"></div>
+<h2>Introdução</h2>
+
+<p>Este documento tem por objetivo oferecer um suporte técnico a usuários iniciantes no Objeto
+    de Aprendizagem Amnesia, considerando essencialmente o uso do módulo "Memória Cache". Ele
+    apresenta os requisitos mínimos para a instalação e uso do Amnesia. Este documento consider
+    a o uso de arquivos de rastro no padrão
+    <b>DIN</b> para a geração dos acessos à memória cache.</p>
+
+<br />
+<div id="skip-Requisite"></div>
+<h2>Requisitos</h2>
+<ol >
+
+    <li>JAVA: pode ser obtido através do link:
+        <a href=" https://java.com/pt_BR/download/index.jsp" target="_blank">Java</a></li>
+    <dd><li type="a" value="1">É importante ressaltar que todos os testes realizados no
+        objeto de aprendizagem Amnesia.Amnesia foram realizados com JAVA 6.5 ou superior. Caso possua
+        uma versão inferior a esta instalada, por favor, obtenha a versão mais atual.</li></dd>
+    <li>Objeto de aprendizagem Amnesia.Amnesia: pode ser obtido através do link:
+        <a href="https://dl.dropboxusercontent.com/u/59435262/Amnesia.zip" target="_blank">Amnesia</a>.</li>
+    <li>Descompactar o arquivo ZIP para qualquer pasta do seu computador.</li>
+    <dd><li type="a" value="1" >Se o objeto Amnesia.Amnesia apresentar mensagens referentes a
+        problemas
+        de conexão
+        durante o seu funcionamento, como por exemplo, “Conecction Refused”, por favor,
+        altere o local de armazenamento da pasta que contém os arquivos do objeto.
+        Sugere-se a pasta Documentos.</li></dd>
+</ol>
+
+
+
+
+<div id="skip-Execute"></div>
+<h2>Execução</h2>
+<div id="skip-ExecuteOA"></div>
+<h3>1)	Executar o objeto de aprendizagem</h3>
+
+<p>Abrir a pasta onde o objeto foi descompactado. Em seguida, executar o arquivo <b>jar</b>
+    referente ao objeto Amnesia.Amnesia conforme mostra a Figura 1. Os demais arquivos
+    existentes na pasta referem-se às arquiteturas (arquivos <b>xml</b> de configuração de
+    ambiente) e rastro de programas (arquivos no formato <b>DIN</b> que se baseiam em
+    traços de execuções de programas). Os arquivos de arquitetura bem como os
+    rastros, serão explicados a seguir.</p>
+<div class="figure">
+    <img src="imagens/fig1.png"><p>Figura 1: Pasta Local do Objeto de Aprendizagem</p>
+</div>
+<br />
+<p>Com o objeto de aprendizagem aberto, a interface gráfica apresentada será semelhante a apresentada na Figura 2. Caso não consiga abrir a ferramenta, muitas das vezes isso se deve ao fato do JAVA não estar instalado no computador. Volte para etapa de requisitos deste tutorial e realize a instalação do JAVA conforme o item 1.</p>
+<br/>
+<div class="figure">
+    <img src="imagens/fig2.png"><p>Figura 2: Interface gráfica do Objeto de Aprendizagem</p>
+</div>
+
+<p>A Figura 3 mostra a interface gráfica dividida em 4 áreas. Essa nomenclatura de áreas será utilizada no decorrer desse tutorial.</p><br/>
+
+<div class="figure">
+    <img src="imagens/fig3.png"><p>Figura 3: Divisão de áreas do objeto de aprendizagem</p>
+</div>
+<p>Na área A da Figura 3 está localizada a barra de ferramentas, local que permite o carregamento de uma arquitetura previamente configurada, programas representados pelos seus arquivos de rastro, entre outras opções.
+</p>
+<p>Na área B da Figura 3 estão localizadas as caixas de seleção de cada componente. Os componentes são: Memória Cache, Memória RAM, Estatísticas e Trace. No canto inferior da área B estão localizados os botões <b>RUN</b>, <b>PAUSE</b> e <b>SAVE</b>. O botão RUN é utilizado para realizar a execução de um programa de uma vez. No entanto, se o botão <b>PAUSE</b> é acionado, o botão <b>RUN</b> é modificado para <b>NEXT STEP</b> e a partir deste momento a execução é feita passo a passo. Após o término da execução, o usuário pode acionar o botão <b>SAVE</b> para salvar um <i><b>log</b></i> contendo as informações da arquitetura utilizada, arquivo de rastro executado, espalhamento dos bits de cada endereço de memória requisitado e as estatísticas de acesso às memórias cache e principal.
+</p>
+<p>Quando uma das caixas de seleção é ativada, o componente selecionado é exibido no campo de visualização, como pode ser visualizado na área C da Figura 3. Cada componente pode ser movimentado e redimensionado pelo usuário de forma livre nesse campo de visualização.
+</p>
+<p> O terminal de saída está localizado na área D da Figura 3, onde são apresentadas informações relacionadas ao carregamento de arquivo de arquitetura e arquivo de rastro. Nesse local também são apresentados detalhes da simulação como: acessos à memória cache, espalhamento de bits, informações de acertos ou falhas nos acessos, entre outras informações.
+</p>
+<br/>
+<div id="skip-openAA"></div>
+<h3>2) Abrir um arquivo de Arquitetura</h3>
+<p>Para iniciar uma simulação é necessária a indicação de uma arquitetura mantida em um arquivo formatado no padrão xml. Podem ser configurados nesse arquivo: atributos de processador, memória cache, principal e virtual. Para realizar uma simulação com o objetivo de analisar o funcionamento da memória cache, os atributos do processador, da memória cache e principal devem ser obrigatoriamente especificados. Desta forma, para o processador deve-se configurar o tamanho da palavra em bytes. Para cada nível da memória cache deve-se configurar o seu tipo (unificada ou separada), seu tamanho em palavras, o número de palavras por bloco, o número de blocos por conjunto (i.e. a associatividade), o número de ciclos para cada acesso de leitura, o número de ciclos para cada acesso de escrita, o tempo de cada ciclo, a política de substituição (FIFO ou LRU) e a política de atualização (write-through ou write-back). Para a memória principal deve-se configurar seu tamanho em palavras, o número de palavras por bloco, o número de ciclos para cada acesso de leitura, o número de ciclos para cada acesso de escrita e o tempo de cada ciclo.
+</p>
+<p>Para carregar a arquitetura é necessário abrir o menu <b>FILE>LoadArchitecture</b> localizado na área A. Uma caixa de seleção irá aparecer para que seja selecionado a o arquivo <b>xml</b>, como mostra a Figura 4.
+</p>
+<div class="figure">
+    <img src="imagens/fig5.png"><p>Figura 4: Caixa de seleção de arquivo de arquitetura</p>
+</div>
+<p>Selecione uma arquitetura e acione o botão <b>Open</b>. É importante ressaltar que os arquivos de arquitetura devem estar na pasta local do objeto Amnesia, caso contrário o erro “Connection Refused” será apresentado.</p>
+
+<br/>
+<div id="skip-openAT"></div>
+<h3>3) Abrir um arquivo de trace</h3>
+<p>Em seguida um arquivo de rastro, que também é chamado de Trace, deve ser carregado. Um arquivo trace contém os acessos realizados por um programa à memória, acessos de leitura, escrita ou busca de instruções. Para abrir um arquivo de trace, acesse o menu <b>FILE>Load Trace</b> na área A. Nesse momento será aberta uma caixa de seleção similar a apresentada na Figura 5.</p>
+<div class="figure">
+    <img src="imagens/fig4.png"><p>Figura 5: Caixa de seleção de um arquivo Trace</p>
+</div>
+
+<p>Os arquivos traces são arquivos do tipo <b>txt</b> contendo os acessos realizados na memória principal. É importante ressaltar que os arquivos de trace, assim como os arquivos de arquitetura, também devem estar na pasta local do objeto Amnesia, caso contrário o erro “Connection Refused” será apresentado.
+</p>
+<p>Após o carregamento da arquitetura e do <b>trace</b>, os componentes podem ser acionados através de cliques nas caixas de seleções localizadas na área B. Assim, os componentes serão apresentados na área C, como na Figura 6. Os componentes podem ser redimensionados e movimentados livremente na área C.
+</p>
+<div class="figure">
+    <img src="imagens/fig6.png"><p>Figura 6: Apresentação dos Componentes, Cache, RAM, Staticts, Trace</p>
+</div>
+
+<br/>
+<div id="skip-DirectEX"></div>
+<h3>4) Execução direta</h3>
+<p>Após o carregamento da arquitetura e do arquivo trace os botões <b>RUN</b> e <b>PAUSE On </b>são ativados na área B. Caso deseje realizar uma execução direta, acione o botão <b>RUN</b> e desta forma todos os passos do trace serão executados. Após a execução, os botões <b>RUN</b> e <b>PAUSE On</b> serão desativados e botão <b>SAVE</b> será ativado, como pode ser observado na Figura 7.</p>
+
+<div class="figure">
+    <img src="imagens/fig7.png"><p>Figura 7: Execução direta da simulação</p>
+</div>
+<p>Observe que as estatísticas de execução do trace são apresentadas no componente <b>Statistics</b>. Além disso, os componentes <b>Cache</b> e <b>RAM</b> são apresentados no seu estado final de execução na área D:</p>
+<div class="placeD">
+    <p>Architecture file loaded successfully.<b id="space_one">(Carregamento da arquitetura realizada com sucesso)</b></p>
+    <p>Binary file loaded successfully.<b id="space_two">(Carregamento do arquivo trace realizada com sucesso)</b></p>
+    <p>Simulating...  <b id="space_three">(Realizando a Simulação)</b></p>
+    <p>Execution finished successfully.	<b id="space_four">(Execução realizada com sucesso)</b></p>
+</div>
+
+
+<br/>
+<div id="skip-StepEX"></div>
+<h3>5) Execução Passo a Passo</h3>
+<p>Além da execução direta, é possível realizar a execução passo a passo de um programa a partir de um arquivo de rastro, que provê um log detalhado e em tempo real da alocação das informações da memória principal na memória cache, possibilitando visualizar o espalhamento dos bits de um endereço requisitado e a determinação do byte-offset, word-offset, set e tag a cada instrução executada. Siga os passos até o item 3 deste documento e depois clique sobre o botão <b>PAUSE ON</b>. Os botões <b>RUN</b> e <b>PAUSE ON</b> passarão a apresentar as novas funcionalidades <b>NEXT STEP</b> e <b>PAUSE OFF</b> respectivamente, como pode ser observado na figura 8.</p>
+<div class="figure">
+    <img src="imagens/fig8.png"><p>Figura 8: Alteração do botão Run para Next Step</p>
+</div>
+
+<p>Execute cada passo do arquivo trace pressionando o botão <b>NEXT STEP</b> e acompanhe o log detalhado da execução no terminal de saída (Área D), como apresentado na Figura 9.</p>
+
+<div class="figure">
+    <img src="imagens/fig9.png"><p>Figura 9: Execução passo a passo de uma simulação</p>
+</div>
+
+<br/>
+<div id="skip-saveLE"></div>
+<h3>6)	Salvamento do log de execução</h3>
+<p>Após o término da simulação, um log pode ser gravado contendo as informações da arquitetura utilizada, código binário ou arquivo de rastro executado, espalhamento dos bits de cada endereço de memória requisitado e as estatísticas de acesso às memórias cache, principal e virtual. Tanto no caso de uma execução direta (<b>Item 4</b>) quanto em uma execução passo a passo (<b>Item 5</b>), os botões <b>PAUSE ON</b>, <b>RUN</b> ou <b>NEXT STEP</b> são desativados permanecendo ativo somente o botão Save como pode ser observado na Figura 10.</p>
+<div class="figure">
+    <img src="imagens/fig10.png"><p>Figura 10: Botão Save habilitado no fim da simulação</p>
+</div>
+<p>Caso deseje salvar o log da execução clique no botão <b>SAVE</b>. Assim, o log será salvo na pasta local do objeto de aprendizagem com a seguinte nome:Log-Amnesia-&#60;ANO&gt;-&#60;MÊS&gt;-&#60;DIA&gt;-&#60;HORA&gt;-&#60;MINUTO&gt;-&#60;SEGUNDO&gt;.log</p>
+<br/>
+<div id="skip-ComplementInfo"></div>
+<h2>Informações complementares</h2>
+<br/>
+<div id="skip-arch-arq"></div>
+<h3>1) Arquivos de arquitetura</h3>
+<p>Para iniciar uma simulação é necessária a indicação de uma arquitetura mantida em um arquivo formatado no padrão <b>xml</b>. Nesse arquivo, atributos de processador, memória cache, principal e virtual podem ser configurados.
+</p>
+<p>Para realizar uma simulação com o objetivo de analisar o funcionamento da memória cache, os atributos do processador, da memória cache e principal devem ser obrigatoriamente especificados. Desta forma, para o processador deve-se configurar o tamanho da palavra em bytes. Para cada nível da memória cache deve-se configurar o seu tipo (unificada ou separada), seu tamanho em palavras, o número de palavras por bloco, o número de blocos por conjunto (i.e. a associatividade), o número de ciclos para cada acesso de leitura, o número de ciclos para cada acesso de escrita, o tempo de cada ciclo, a política de substituição (FIFO ou LRU) e a política de atualização (write-through ou write-back).
+</p>
+<p>Para a memória principal deve-se configurar seu tamanho em palavras, o número de palavras por bloco, o número de ciclos para cada acesso de leitura, o número de ciclos para cada acesso de escrita e o tempo de cada ciclo. A seguir, é apresentado o contudo de um arquivo de arquitetura e suas possíveis configurações na cor verde:
+</p>
+
+<p class="green">&#60;!-- Início de Cabeçalho do arquivo de arquitetura não modificar --></p>
+<p class="darkred">&#60;?xmlversion="1.0" encoding="ISO-8859-1"?></p>
+<p class="darkred">&#60;!DOCTYPEAmnesiaConfiguration SYSTEM "Configuration/amnesia.dtd"></p>
+<p class="darkred">&#60;?xml-stylesheettype="text/css" href="teste.css"?></p>
+<p class="green">&#60;!-- Fim do Cabeçalho --></p>
+
+<p class="green">&#60;!-- Início da configuração--></p>
+<p class="red" >&#60;AmnesiaConfiguration></p>
+<p class="red2" >&#60;Processor></p>
+<p class="red3" >&#60;processorContains>0&#60;/processorContains></p>
+<p class="red3" >&#60;createTraceFile>0&#60;/createTraceFile></p>
+<p class="red2" >&#60;/Processor></p>
+<p class="red2" >&#60;Trace></p>
+<p class="green">&#60;!-- Tamanho da palavra 4 Bytes, modificações substituir os dois valores--></p>
+<p class="red3" >&#60;wordSize>4&#60;/wordSize></p>
+<p class="red2" >&#60;/Trace></p>
+<p class="red2" >&#60;CPU></p>
+<p class="green">&#60;!-- Tamanho da palavra 4 Bytes, modificações substituir os dois valores--></p>
+<p class="red3" >&#60;wordSize>4&#60;/wordSize></p>
+<p class="red2" >&#60;/CPU></p>
+<p class="green">&#60;!-- Memória  principal--></p>
+<p class="red2" >&#60;MainMemory></p>
+<p class="green">&#60;!-- valores em Bytes manter valor de blockSize igual o valor lineSize --></p>
+<p class="red3" >&#60;blockSize>1&#60;/blockSize></p>
+<p class="red3" >&#60;memorySize>256&#60;/memorySize></p>
+<p class="red3" >&#60;ciclesPerAccessRead>1&#60;/ciclesPerAccessRead></p>
+<p class="red3" >&#60;ciclesPerAccessWrite>2&#60;/ciclesPerAccessWrite></p>
+<p class="red3" >&#60;timeCicle>2&#60;/timeCicle></p>
+<p class="red2" >&#60;/MainMemory></p>
+<p class="red2" >&#60;Cache></p>
+<p class="green">&#60;!-- Os tipos de cache possíveis são Unified e Split--></p>
+<p class="red3" >&#60;cacheType>Unified&#60;/cacheType></p>
+<p class="red3" >&#60;unifiedCache></p>
+<p class="green">&#60;!-- valores em Bytes manter valor de blockSize igual o valor lineSize --></p>
+<p class="red4" >&#60;lineSize>1&#60;/lineSize></p>
+<p class="red4" >&#60;ciclesPerAccessRead>1&#60;/ciclesPerAccessRead></p>
+<p class="red4" >&#60;ciclesPerAccessWrite>2&#60;/ciclesPerAccessWrite></p>
+<p class="red4" >&#60;timeCicle>1&#60;/timeCicle></p>
+<p class="red4" >&#60;memorySize>64&#60;/memorySize></p>
+<p class="red4" >&#60;associativityLevel>1&#60;/associativityLevel></p>
+<p class="green">&#60;!-- Política de Escrita valores possíveis WriteBack e WriteThrough --></p>
+<p class="red4" >&#60;writePolicy>WriteBack&#60;/writePolicy></p>
+<p class="green">&#60;!-- Algoritmos de substituição valores possíveis LRU e FIFO --></p>
+<p class="red4" >&#60;replacementAlgorithm>LRU&#60;/replacementAlgorithm></p>
+<p class="red3" >&#60;/unifiedCache></p>
+<p class="red2" >&#60;/Cache></p>
+<p class="red" >&#60;/AmnesiaConfiguration></p>
+<p class="green">&#60;!-- Fim da configuração --></p>
+
+
+<p>Lembrando que:
+</p>
+<p>O arquivo deve ser salvo no formato xml e outros formatos não são reconhecidos.
+</p>
+<p>O arquivo dever ser salvo na pasta local do objeto de aprendizagem.
+</p>
+<br/>
+<div id="skip-trace-arq"></div>
+<h3>2) Arquivos de trace</h3>
+<p>O arquivo trace ou arquivo de rastro pode ser escrito seguindo algumas orientações:
+</p><p>Cada linha deste arquivo é composta de uma dupla: rótulo (decimal) e endereço (hexadecimal). Qualquer outra informação é vista como um comentário. Um exemplo pode ser visto na Figura 11. Os rótulos possíveis são:
+</p>
+
+<ul>
+    <li>Rótulo “0”: leitura de dados; </li>
+    <li>Rótulo “1”: gravação de dados; </li>
+    <li>Rótulo “2”: busca de instrução; </li>
+    <li>Rótulo “3”: registro escape (tratado como tipo de acesso desconhecido); </li>
+    <li>Rótulo “4”: registro escape (operação de cache flush). </li>
+</ul>
+<div class="figure">
+    <img src="imagens/fig11.png"><p>Figura 11: Exemplo de um arquivo Trace</p>
+</div>
+<p>Lembrando que:
+</p><p>O arquivo deve ser salvo no formato txt e outros formatos não são reconhecidos.
+</p><p>O arquivo deve ser salvo na pasta local do objeto de aprendizagem.
+</p>
+</div>
+
+<div id="blank_right">
+    <img src="imagens/faixa.png">
+</div>
+
+</body>
+
+
+
+</html>
